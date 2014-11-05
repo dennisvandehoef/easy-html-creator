@@ -8,6 +8,7 @@ GEM
     execjs (2.2.2)
     haml (4.0.5)
       tilt
+    rake (10.1.0)
     sass (3.4.7)
     tilt (2.0.1)
 
@@ -17,4 +18,5 @@ PLATFORMS
 DEPENDENCIES
   coffee-script
   haml
+  rake
   sass
