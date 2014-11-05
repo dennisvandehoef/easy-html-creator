@@ -51,7 +51,7 @@ class Context
   end
 end
 
-class Generator
+class HamlGenerator
   def initialize(example_boolean)
     @example_boolean = example_boolean
     @output_dir = "../web_root/"
@@ -80,7 +80,7 @@ class Generator
 end
 
 def generate_haml_for(folder)
-  g = Generator.new false
+  g = HamlGenerator.new false
   Dir.glob("../dev_root/#{folder}/*.haml").select do |file|
     file_name = file.split('/')[-1]
     file_name_a = file_name.split('.')
