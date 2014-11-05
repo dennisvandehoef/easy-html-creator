@@ -78,7 +78,7 @@ class Generator
   end
 end
 
-def do_generate
+def do_generate_haml
   example_boolean = ARGV.length > 0 && (ARGV[0] == "true" || ARGV[0] == "yes")
   g = Generator.new example_boolean
   g.generate "index"
