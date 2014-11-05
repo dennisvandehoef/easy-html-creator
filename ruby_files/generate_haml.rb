@@ -11,10 +11,11 @@ class Context
   # Any properties of this object are available in the Haml templates.
   attr_reader :example_boolean
 
-  def initialize(example_boolean, scope, options)
+  def initialize(example_boolean, scope, options, folder)
     @example_boolean = example_boolean
     @scope = scope
     @options = options
+    @folder = folder
   end
 
   # This is an example function that can be called inside Haml templates.
@@ -32,11 +33,11 @@ class Context
   # conventions to render another template file when it's called.
   def render_partial(file_name)
     # The "default" version of the partial.
-    file_to_render = "../dev_root/partials/#{file_name.to_s}.haml"
+    file_to_render = "../dev_root/#{@folder}/partials/#{file_name.to_s}.haml"
     if @scope
       # Look for a partial prefixed with the current "scope" (which is just the name of the
       # primary template being rendered).
-      scope_file = "../dev_root/partials/#{@scope.to_s}_#{file_name.to_s}.haml"
+      scope_file = "../dev_root/#{@folder}/partials/#{@scope.to_s}_#{file_name.to_s}.haml"
       # Use it if it's there.
       file_to_render = scope_file if File.exists? scope_file
     end
@@ -73,7 +74,7 @@ class Generator
     create_structure(folder)
 
     layout = Haml::Engine.new(File.read("../dev_root/#{folder}/layout.haml"), @haml_options)
-    c = Context.new @example_boolean, input_file, @haml_options
+    c = Context.new @example_boolean, input_file, @haml_options, folder
 
     # If the file being processed by Haml contains a yield statement, the block passed to
     # "render" will be called when it's hit.
