@@ -53,6 +53,8 @@ class Generator
   def initialize(example_boolean)
     @example_boolean = example_boolean
     @output_dir = "../web_root/"
+    FileUtils.rm_rf(Dir.glob("#{@output_dir}*"))
+
     # Change these to whatever makes sense for your needs.
     @haml_options = { attr_wrapper: '"', format: :html5 }
   end
