@@ -55,21 +55,12 @@ class Generator
   def initialize(example_boolean)
     @example_boolean = example_boolean
     @output_dir = "../web_root/"
-    FileUtils.rm_rf(Dir.glob("#{@output_dir}*"))
 
     # Change these to whatever makes sense for your needs.
     @haml_options = { attr_wrapper: '"', format: :html5 }
   end
 
-  def create_structure(folder)
-    return if File.directory? "#{@output_dir}#{folder}/"
-
-    FileUtils::mkdir_p "#{@output_dir}#{folder}/"
-  end
-
   def generate(folder, input_file)
-    create_structure(folder)
-
     layout = Haml::Engine.new(File.read("../dev_root/#{folder}/layout.haml"), @haml_options)
     c = Context.new @example_boolean, input_file, @haml_options, folder
 
@@ -88,23 +79,13 @@ class Generator
   end
 end
 
-def do_generate_haml
-  example_boolean = ARGV.length > 0 && (ARGV[0] == "true" || ARGV[0] == "yes")
-  g = Generator.new example_boolean
-  Dir.glob('../dev_root/*').select do |folder|
-    next unless File.directory? folder
-    folder = folder.split('/')[-1]
-    Dir.glob("../dev_root/#{folder}/*.haml").select do |file|
-      file_name = file.split('/')[-1]
-      file_name_a = file_name.split('.')
-      file_name = file_name_a.take(file_name_a.size-1) * '.'
-      next unless File.file? file and file_name != 'layout'
-      g.generate folder, file_name
-    end
+def generate_haml_for(folder)
+  g = Generator.new false
+  Dir.glob("../dev_root/#{folder}/*.haml").select do |file|
+    file_name = file.split('/')[-1]
+    file_name_a = file_name.split('.')
+    file_name = file_name_a.take(file_name_a.size-1) * '.'
+    next unless File.file? file and file_name != 'layout'
+    g.generate folder, file_name
   end
-
-end
-
-if __FILE__==$0
-  do_generate_haml
 end

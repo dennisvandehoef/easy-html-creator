@@ -1,6 +1,6 @@
 require 'socket'
 require 'uri'
-require './generate_haml.rb'
+require './generate.rb'
 
 # Files will be served from this directory
 WEB_ROOT = '../web_root'
@@ -67,8 +67,8 @@ loop do
   path = requested_file(request_line)
 
   #generate HAML files
-  STDERR.puts "Renew HAML files"
-  do_generate_haml
+  STDERR.puts "Renew all files"
+  generate_files
 
   # Make sure the file exists and is not a directory
   # before attempting to open it.
