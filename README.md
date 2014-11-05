@@ -7,8 +7,9 @@ Versions
 =================
 
 - **0.0.1** First wordking version
-- **0.0.2** Dynamic rendering and remove all old files bevore rendering *(In development)*
+- **0.0.2** Dynamic rendering and remove all old files bevore rendering
 - **0.1.0** Add SASS ans CoffeeScript *(In development)*
+- **0.1.1** copy images and other static files *(In development)*
 - **0.2.0** Cleenup code *(In development)*
 - **1.0.0** Make it a gem *(In development)*
 
