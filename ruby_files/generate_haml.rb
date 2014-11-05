@@ -3,6 +3,7 @@
 require "rubygems"
 require "bundler/setup"
 
+require 'fileutils'
 require "haml"
 
 # Calls to "render" can take a context object that will be accessible from the templates.
@@ -59,19 +60,30 @@ class Generator
     @haml_options = { attr_wrapper: '"', format: :html5 }
   end
 
-  def generate(input_file)
-    layout = Haml::Engine.new(File.read("../dev_root/layout.haml"), @haml_options)
+  def create_structure(folder)
+    puts "test1: #{folder}"
+    return if File.directory? "#{@output_dir}#{folder}/"
+
+    puts "test2: #{@output_dir}#{folder}/"
+
+    FileUtils::mkdir_p "#{@output_dir}#{folder}/"
+  end
+
+  def generate(folder, input_file)
+    create_structure(folder)
+
+    layout = Haml::Engine.new(File.read("../dev_root/#{folder}/layout.haml"), @haml_options)
     c = Context.new @example_boolean, input_file, @haml_options
 
     # If the file being processed by Haml contains a yield statement, the block passed to
     # "render" will be called when it's hit.
     output = layout.render c do
       # Render the actual page contents in place of the call to "yield".
-      body = Haml::Engine.new(File.read("../dev_root/#{input_file}.haml"), @haml_options)
+      body = Haml::Engine.new(File.read("../dev_root/#{folder}/#{input_file}.haml"), @haml_options)
       body.render c
     end
 
-    output_path = File.join(@output_dir, "#{input_file}.html")
+    output_path = File.join("#{@output_dir}#{folder}/", "#{input_file}.html")
     File.open(output_path, "w") do |f|
       f.write output
     end
@@ -81,9 +93,14 @@ end
 def do_generate_haml
   example_boolean = ARGV.length > 0 && (ARGV[0] == "true" || ARGV[0] == "yes")
   g = Generator.new example_boolean
-  g.generate "index"
+  Dir.glob('../dev_root/*').select do |folder|
+    return unless File.directory? folder
+    folder = folder.split('/')[-1]
+    g.generate folder, "index"
+  end
+
 end
 
 if __FILE__==$0
-  do_generate
+  do_generate_haml
 end
