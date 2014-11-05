@@ -7,6 +7,7 @@ require 'fileutils'
 
 require './generate_haml.rb'
 require './generate_sass.rb'
+require './generate_coffeeScript.rb'
 
 def generate_files
   FileUtils.rm_rf(Dir.glob("../web_root/*"))
@@ -18,6 +19,7 @@ def generate_files
     create_structure_for(folder)
     generate_haml_for(folder)
     generate_sass_for(folder)
+    generate_coffee_for(folder)
   end
 end
 
@@ -26,6 +28,7 @@ def create_structure_for(folder)
 
   FileUtils::mkdir_p "../web_root/#{folder}/"
   FileUtils::mkdir_p "../web_root/#{folder}/css/"
+  FileUtils::mkdir_p "../web_root/#{folder}/js/"
 end
 
 if __FILE__==$0
