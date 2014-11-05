@@ -62,10 +62,7 @@ class Generator
   end
 
   def create_structure(folder)
-    puts "test1: #{folder}"
     return if File.directory? "#{@output_dir}#{folder}/"
-
-    puts "test2: #{@output_dir}#{folder}/"
 
     FileUtils::mkdir_p "#{@output_dir}#{folder}/"
   end
@@ -95,9 +92,15 @@ def do_generate_haml
   example_boolean = ARGV.length > 0 && (ARGV[0] == "true" || ARGV[0] == "yes")
   g = Generator.new example_boolean
   Dir.glob('../dev_root/*').select do |folder|
-    return unless File.directory? folder
+    next unless File.directory? folder
     folder = folder.split('/')[-1]
-    g.generate folder, "index"
+    Dir.glob("../dev_root/#{folder}/*.haml").select do |file|
+      file_name = file.split('/')[-1]
+      file_name_a = file_name.split('.')
+      file_name = file_name_a.take(file_name_a.size-1) * '.'
+      next unless File.file? file and file_name != 'layout'
+      g.generate folder, file_name
+    end
   end
 
 end
