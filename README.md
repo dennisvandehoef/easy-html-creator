@@ -9,7 +9,7 @@ Versions
 - **0.0.1** First wordking version
 - **0.0.2** Dynamic rendering and remove all old files bevore rendering
 - **0.1.0** Add SASS ans CoffeeScript
-- **0.1.1** copy images and other static files
+- **0.1.1** Copy images and other static files
 
 Credits
 =======
