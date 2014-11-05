@@ -62,6 +62,7 @@ loop do
   socket       = server.accept
   request_line = socket.gets
 
+  next unless request_line
   STDERR.puts request_line
 
   path = requested_file(request_line)
