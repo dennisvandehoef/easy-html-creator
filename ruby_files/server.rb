@@ -56,6 +56,8 @@ end
 
 server = TCPServer.new('localhost', 2345)
 
+STDERR.puts "Server binded to http://localhost:2345"
+
 loop do
   socket       = server.accept
   request_line = socket.gets
