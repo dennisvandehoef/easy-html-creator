@@ -13,7 +13,7 @@ start it!
  
  `bundle exec rake start`
 
-  follow the console output and open a webbrowser
+  ...follow the console output and open a webbrowser
 
 TODO
 =======
