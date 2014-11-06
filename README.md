@@ -13,6 +13,8 @@ start it!
  
  `bundle exec rake start`
 
+  follow the console output and open a webbrowser
+
 TODO
 =======
 - add a demo sites that make sin
