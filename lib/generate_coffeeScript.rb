@@ -1,20 +1,17 @@
 #!/usr/bin/env ruby
 
-require "rubygems"
-require "bundler/setup"
-
+require 'rubygems'
+require 'bundler/setup'
 require 'fileutils'
 require 'coffee-script'
 
-
 class CoffeeGenerator
   def initialize
-    @output_dir = "../web_root/"
+    @output_dir = "web_root/"
   end
 
   def generate(folder, input_file)
-    output = CoffeeScript.compile(File.read("../dev_root/#{folder}/coffee_files/#{input_file}"))
-
+    output = CoffeeScript.compile(File.read("dev_root/#{folder}/coffee/#{input_file}"))
 
     file_name_a = input_file.split('.')
     file_name = file_name_a.take(file_name_a.size-1) * '.'
@@ -28,7 +25,7 @@ end
 
 def generate_coffee_for(folder)
   g = CoffeeGenerator.new
-  Dir.glob("../dev_root/#{folder}/coffee_files/*.coffee").select do |file|
+  Dir.glob("dev_root/#{folder}/coffee/*.coffee").select do |file|
     file_name = file.split('/')[-1]
     next unless File.file? file
     g.generate folder, file_name
