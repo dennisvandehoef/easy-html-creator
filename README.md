@@ -1,7 +1,7 @@
 easy-html-creator
 =================
 
-A simple prodject for fast HTML file createmend
+A simple project for fast HTML file creation
 
 to start:
   rake start
@@ -9,9 +9,9 @@ to start:
 Versions
 =================
 
-- **0.0.1** First wordking version
-- **0.0.2** Dynamic rendering and remove all old files bevore rendering
-- **0.1.0** Add SASS ans CoffeeScript
+- **0.0.1** First working version
+- **0.0.2** Dynamic rendering and remove all old files before rendering
+- **0.1.0** Add SASS and CoffeeScript
 - **0.1.1** Copy images and other static files
 
 Credits
