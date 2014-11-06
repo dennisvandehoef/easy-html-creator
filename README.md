@@ -9,9 +9,9 @@ to start:
  
  `cd easy-html-creator` 
  
- `bundle`
+ `bundle install`
  
- `rake start`
+ `bundle exec rake start`
 
 TODO
 =======
