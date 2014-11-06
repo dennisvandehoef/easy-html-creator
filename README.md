@@ -1,7 +1,7 @@
 easy-html-creator
 =================
 
-A simple project for fast HTML file creation, haml+sass+coffee+ruby
+A simple project for fast HTML file creation, haml+sass+coffee+ruby+bootstrap+jquery -> static html -> ftp deploy
 
 to start:
 =======
@@ -20,6 +20,7 @@ TODO
 - make it a gem and configurable
 - load shared/helpers and test1/helpers dynamically
 - decide if we use activesupport or extend the lib/activesupport_simulator_helper
+- ftp deployment
 
 
 Credits
