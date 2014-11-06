@@ -2,6 +2,7 @@
 
 require 'rubygems'
 require 'bundler/setup'
+
 require 'fileutils'
 require 'sass'
 
@@ -15,6 +16,7 @@ class SassGenerator
 
   def generate(folder, input_file)
     engine = Sass::Engine.new(File.read("dev_root/#{folder}/sass/#{input_file}"))
+
     file_name_a = input_file.split('.')
     file_name = file_name_a.take(file_name_a.size-1) * '.'
 

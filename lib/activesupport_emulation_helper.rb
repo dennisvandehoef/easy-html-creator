@@ -1,14 +1,4 @@
 module ActivesupportEmulationHelper
-  def copyright_year
-    start_year = 2013
-    end_year = Time.now.year
-    if end_year == start_year
-      start_year.to_s
-    else
-      "#{start_year}&#8211;#{end_year}"
-    end
-  end
-
   def stylesheet_link_tag(path, media='screen')
     '<link href="'+path_to_css(path)+'" media="'+media+'" rel="stylesheet" type="text/css" />'
   end
@@ -20,6 +10,18 @@ module ActivesupportEmulationHelper
   def image_tag(source, options={})
     options[:src] = path_to_image(source)
     tag("img", options)
+  end
+
+  def text_field_tag(name, value='', options = {})
+    options[:name]  = name
+    options[:value] = value
+    options[:type]  = 'text'
+    tag('input', options)
+  end
+
+  def text_area_tag(name, value='', options = {})
+    options[:name]  = name
+    content_tag(:textarea, value, options)
   end
 
   def meta_tag(type, content)
@@ -48,18 +50,18 @@ module ActivesupportEmulationHelper
     content_tag(:a, name || url, html_options, &block)
   end
 
-  def content_tag(name, options = nil, escape = true, &block)
-    if block_given?
-      options = content_or_options_with_block if content_or_options_with_block.is_a?(Hash)
-      content_tag_string(name, capture(&block), options, escape)
-    else
-      content_tag_string(name, options, escape)
-    end
+  def content_tag(type, name, options = true, &block)
+    #if block_given?
+    #  options = content_or_options_with_block if content_or_options_with_block.is_a?(Hash)
+    #  content_tag_string(type, capture(&block), name, options)
+    #else
+      content_tag_string(type, name, options)
+    #end
   end
 
-  def content_tag_string(name, content, options)
+  def content_tag_string(type, content, options)
     tag_options = tag_options(options) if options
-    "<#{name}#{tag_options}>#{content}</#{name}>"#.html_safe
+    "<#{type}#{tag_options}>#{content}</#{type}>"#.html_safe
   end
 
   def tag_options(options)

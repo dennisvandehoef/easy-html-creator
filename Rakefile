@@ -7,7 +7,7 @@ end
 
 desc "starts the server"
 task :start do
-  `ruby lib/server.rb`
+  `ruby lib/run.rb`
 end
 
 desc "runs the tests"
