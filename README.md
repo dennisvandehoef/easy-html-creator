@@ -5,7 +5,7 @@ A simple project for fast HTML file creation, haml+sass+coffee+ruby+bootstrap+jq
 
 start it!
 =======
- `git checkout git@github.com:dennisvandehoef/easy-html-creator.git`
+ `git clone git@github.com:dennisvandehoef/easy-html-creator.git`
  
  `cd easy-html-creator` 
  
