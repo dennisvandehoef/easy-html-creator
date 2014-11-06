@@ -2,8 +2,10 @@
 
 require 'rubygems'
 require 'bundler/setup'
+
 require 'fileutils'
 require 'coffee-script'
+
 
 class CoffeeGenerator
   def initialize

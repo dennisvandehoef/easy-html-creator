@@ -2,9 +2,9 @@
 
 require 'rubygems'
 require 'bundler/setup'
+
 require 'fileutils'
 require 'haml'
-
 require_relative 'activesupport_emulation_helper'
 
 # TODO include shared/helper dynamic
@@ -18,7 +18,6 @@ class Context
 
   include ActivesupportEmulationHelper
 
-  #TODO
   #Dir.glob(File.join('dev_root', 'shared', 'helper', '*.rb'), &method(:include))
 
   def initialize(example_boolean, scope, options, folder)
