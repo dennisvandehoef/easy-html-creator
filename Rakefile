@@ -2,12 +2,12 @@ require "rake"
 
 desc "generates the content"
 task :generate do
-  `cd ruby_files && ruby generate.rb`
+  `ruby lib/generate.rb`
 end
 
 desc "starts the server"
 task :start do
-  `cd ruby_files && ruby server.rb`
+  `ruby lib/server.rb`
 end
 
 desc "runs the tests"
