@@ -4,7 +4,15 @@ easy-html-creator
 A simple prodject for fast HTML file createmend
 
 to start:
+  bundle
   rake start
+
+TODO
+=======
+- refactor server
+- load shared/helpers and test1/helpers dynamically
+- load generators per config
+- decide if we use activesupport or extend the simulator
 
 Versions
 =================
