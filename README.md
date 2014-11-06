@@ -4,7 +4,7 @@ easy-html-creator
 A simple project for fast HTML file creation
 
 to start:
-  rake start
+ `rake start`
 
 Versions
 =================
