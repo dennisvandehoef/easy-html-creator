@@ -1,0 +1,11 @@
+= link_tag 'favicon.ico', 'icon', 'image/x-icon'
+= link_tag 'favicon.ico', 'shortcut icon', 'image/x-icon'
+= stylesheet_link_tag 'http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'
+= stylesheet_link_tag 'main.css'
+= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'
+= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js'
+/[if lt IE 9]
+  = javascript_include_tag 'https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js'
+  = javascript_include_tag 'https://oss.maxcdn.com/respond/1.4.2/respond.min.js'
+  %script
+    var ltie9 = true

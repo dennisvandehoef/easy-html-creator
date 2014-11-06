@@ -4,7 +4,17 @@ easy-html-creator
 A simple project for fast HTML file creation
 
 to start:
+=======
+ `bundle`
  `rake start`
+
+
+TODO
+=======
+- refactor server
+- load shared/helpers and test1/helpers dynamically
+- load generators per config
+- decide if we use activesupport or extend the simulator
 
 Versions
 =================
