@@ -1,9 +1,10 @@
 !!!
-%html
+%html{lang: 'de'}
   %head
-    %title
-      = render_partial :title
-  %body
+    = render_partial '_metadata'
+    = render_partial '_assets'
+
+  %body{class: body_class}
+    = render_partial '_header'
     = yield
-    %div(style="position:absolute;bottom:10px;")
-      Copyright #{copyright_year}
+    = render_partial '_footer'
