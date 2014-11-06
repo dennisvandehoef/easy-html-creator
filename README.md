@@ -6,8 +6,11 @@ A simple project for fast HTML file creation, haml+sass+coffee+ruby
 to start:
 =======
  `git checkout git@github.com:dennisvandehoef/easy-html-creator.git`
+ 
  `cd easy-html-creator` 
+ 
  `bundle`
+ 
  `rake start`
 
 TODO
