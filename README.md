@@ -6,24 +6,17 @@ A simple project for fast HTML file creation, haml+sass+coffee+ruby+bootstrap+jq
 start it!
 =======
  `git clone git@github.com:dennisvandehoef/easy-html-creator.git`
- 
- `cd easy-html-creator` 
- 
+
+ `cd easy-html-creator`
+
  `bundle install`
- 
+
  `bundle exec rake start`
 
   ...follow the console output and open a webbrowser
 
 TODO
-=======
-- add a demo sites that make sin
-- refactor generators
-- make it a gem and configurable
-- load shared/helpers and test1/helpers dynamically
-- decide if we use activesupport or extend the lib/activesupport_simulator_helper
-- ftp deployment
-
+- clean/refactor code
 
 Credits
 =======
