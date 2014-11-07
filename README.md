@@ -11,10 +11,7 @@ to start:
 
 TODO
 =======
-- refactor server
-- load shared/helpers and test1/helpers dynamically
-- load generators per config
-- decide if we use activesupport or extend the simulator
+- clean/refactor code
 
 Versions
 =================
@@ -23,6 +20,7 @@ Versions
 - **0.0.2** Dynamic rendering and remove all old files before rendering
 - **0.1.0** Add SASS and CoffeeScript
 - **0.1.1** Copy images and other static files
+- **0.1.2** project helper and actionview for hml files
 
 Credits
 =======
