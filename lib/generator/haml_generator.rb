@@ -1,6 +1,10 @@
 require 'fileutils'
 require 'haml'
-require_relative '../activesupport_emulation_helper'
+require 'action_view'
+
+#require shared helper
+$shared_helper = Dir.glob('./dev_root/shared/helper/*.rb')
+$shared_helper.each do |file| require file end
 
 module Generator
   class HamlGenerator
@@ -42,18 +46,19 @@ module Generator
     end
   end
 
-  # TODO include shared/helper dynamic
-  # Dir.glob(File.join('.', 'dev_root', 'shared', 'helper', '*.rb'), &method(:require))
-
-
   # Calls to "render" can take a context object that will be accessible from the templates.
   class Context
     # Any properties of this object are available in the Haml templates.
     attr_reader :example_boolean
 
-    include ActivesupportEmulationHelper
+    include ActionView::Helpers
 
-    #Dir.glob(File.join('dev_root', 'shared', 'helper', '*.rb'), &method(:include))
+    $shared_helper.each do |path|
+      file_without_ext = path.split('/')[-1].split('.').first
+      module_name      = file_without_ext.classify
+      STDERR.puts 'loading helper -> '+module_name
+      include module_name.constantize
+    end
 
     def initialize(example_boolean, scope, options, input_folder, output_folder)
       @example_boolean = example_boolean
@@ -61,6 +66,13 @@ module Generator
       @options = options
       @input_folder = input_folder
       @output_folder = output_folder
+      Dir.glob("./#{input_folder}/helper/*.rb").each do |path|
+        require path
+        file_without_ext = path.split('/')[-1].split('.').first
+        module_name      = file_without_ext.classify
+        STDERR.puts 'loading project helper -> '+module_name
+        self.class.send(:include, module_name.constantize)
+      end
     end
 
     # This function is no different from the "copyright_year" function above. It just uses some
