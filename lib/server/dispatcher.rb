@@ -1,4 +1,4 @@
-require_relative '../generate.rb'
+require_relative '../generator/generator.rb'
 
 module Server
   class Dispatcher
@@ -20,7 +20,7 @@ module Server
 
       #no html? no reload -> no regenarate
       server.log "Renew all files"
-      generate_files
+      Generator::Generator.new.generate
     end
 
     def dispatch(request, response, server)

@@ -1,8 +1,9 @@
-require "rake"
+require 'rake'
+require 'lib/generator/generator'
 
 desc "generates the content"
 task :generate do
-  `ruby lib/generate.rb`
+  Generator::Generator.new.generate
 end
 
 desc "starts the server"
