@@ -1,5 +1,5 @@
 require 'rake'
-require 'lib/generator/generator'
+require './lib/generator/generator'
 
 desc "generates the content"
 task :generate do
