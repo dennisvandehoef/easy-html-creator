@@ -33,7 +33,7 @@ We also included the 'actionview' gem, to enable the use of rails standard funct
                    "CHANGELOG.md"]
   s.homepage    = 'https://github.com/dennisvandehoef/easy-html-creator'
 
-  s.executables = 'start'
+  s.executables = ["start", "generate"]
 
   s.add_runtime_dependency 'haml'
   s.add_runtime_dependency 'sass'
