@@ -1,3 +1,0 @@
-#!/usr/bin/env ruby
-
-require './lib/easy_html_creator.rb'
