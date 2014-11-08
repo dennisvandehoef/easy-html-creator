@@ -27,10 +27,17 @@ We also included the 'actionview' gem, to enable the use of rails standard funct
                    "lib/server/response.rb",
                    "lib/server/server.rb",
                    "Gemfile",
-                   "Gemfile.lock",
                    "Rakefile",
                    "LICENSE",
                    "README.md",
                    "CHANGELOG.md"]
   s.homepage    = 'https://github.com/dennisvandehoef/easy-html-creator'
+
+
+  s.add_runtime_dependency 'haml'
+  s.add_runtime_dependency 'sass'
+  s.add_runtime_dependency 'coffee-script'
+  s.add_runtime_dependency 'rake'
+  s.add_runtime_dependency 'bootstrap-sass'
+  s.add_runtime_dependency 'actionview'
 end
