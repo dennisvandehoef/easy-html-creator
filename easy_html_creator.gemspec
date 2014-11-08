@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-  s.name        = 'easy_html_editor'
+  s.name        = 'easy_html_creator'
   s.version     = '1.0.0'
   s.licenses    = ['MIT']
   s.summary     = "A simple project for fast and easy HTML website createmend"
@@ -33,6 +33,7 @@ We also included the 'actionview' gem, to enable the use of rails standard funct
                    "CHANGELOG.md"]
   s.homepage    = 'https://github.com/dennisvandehoef/easy-html-creator'
 
+  s.executables = 'start'
 
   s.add_runtime_dependency 'haml'
   s.add_runtime_dependency 'sass'
