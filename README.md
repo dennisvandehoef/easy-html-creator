@@ -13,17 +13,25 @@ CoffeeScript
 
 We also included the "actionview" gem, to enable the use of rails standard functions like "text_field_tag".
 
-start it!
+Installation
 =======
- `git clone git@github.com:dennisvandehoef/easy-html-creator.git`
+Add folliwing to your Gemfile
 
- `cd easy-html-creator`
+ `gem 'easy-html-editor'`
+
+than  run 
 
  `bundle install`
 
- `bundle exec rake start`
+Usage
+=======
 
-  ...follow the console output and open a webbrowser
+ `generate`
+ This command will generate all the files
+
+ `start`
+ This command will start a webserver with will automatically regenerate all the files
+
 
 TODO
 ========
