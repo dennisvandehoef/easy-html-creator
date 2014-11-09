@@ -16,25 +16,12 @@ CoffeeScript
 
 We also included the 'actionview' gem, to enable the use of rails standard functions like 'text_field_tag'."
   s.authors     = ["Tom Hanolt", "Dennis van de Hoef"]
-  s.files       = ["lib/easy_html_creator.rb",
-                   "lib/generator/coffee_generator.rb",
-                   "lib/generator/generator.rb",
-                   "lib/generator/haml_generator.rb",
-                   "lib/generator/sass_generator.rb",
-                   "lib/generator/structure_generator.rb",
-                   "lib/server/dispatcher.rb",
-                   "lib/server/request.rb",
-                   "lib/server/response.rb",
-                   "lib/server/server.rb",
-                   "Gemfile",
-                   "Rakefile",
-                   "LICENSE",
-                   "README.md",
-                   "CHANGELOG.md",
-                   "dev_root/**/*"]
+  s.files       = Dir.glob("{bin,lib,dev_root}/**/*") + %w(LICENSE README.md Gemfile CHANGELOG.md)
   s.homepage    = 'https://github.com/dennisvandehoef/easy-html-creator'
 
-  s.executables = ["start", "generate", "init"]
+  s.executables = ["start",
+                   "generate",
+                   "initDevRoot"]
 
   s.add_runtime_dependency 'haml'
   s.add_runtime_dependency 'sass'

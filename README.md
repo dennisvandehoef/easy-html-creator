@@ -26,7 +26,7 @@ than  run
 Usage
 =======
 
- `init`
+ `initDevRoot`
  This command will generate a sample dev_root and web_root folder
 
  `generate`
