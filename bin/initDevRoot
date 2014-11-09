@@ -3,8 +3,10 @@
 
 require 'fileutils'
 
-puts "testing: #{Dir.pwd}/dev_root"
+source_dir = File.expand_path(File.dirname(__FILE__))[0..-4]
+output_folder = "#{Dir.pwd}/dev_root"
 
-#unless File.directory? "#{Dir.pwd}/dev_root"
-  FileUtils::copy_entry("../dev_root", Dir.pwd)
-#end
+unless File.directory? output_folder
+  FileUtils::mkdir_p output_folder
+  FileUtils::copy_entry("#{source_dir}dev_root", output_folder)
+end
