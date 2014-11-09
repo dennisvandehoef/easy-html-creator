@@ -1,3 +1,7 @@
+1.0.0
+=================
+We released our project as a gem (https://rubygems.org/gems/easy_html_creator)
+
 0.1.2
 =================
 Project helper and add actionview for hml files
