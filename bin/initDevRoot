@@ -18,4 +18,4 @@ unless File.directory? "#{Dir.pwd}/web_root"
   FileUtils::mkdir_p "#{Dir.pwd}/web_root"
 end
 
-pust "All done, use 'startServer' to start the development server."
+puts "All done, use 'startServer' to start the development server."
