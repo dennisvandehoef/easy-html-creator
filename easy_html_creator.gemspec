@@ -30,10 +30,11 @@ We also included the 'actionview' gem, to enable the use of rails standard funct
                    "Rakefile",
                    "LICENSE",
                    "README.md",
-                   "CHANGELOG.md"]
+                   "CHANGELOG.md",
+                   "dev_root/**/*"]
   s.homepage    = 'https://github.com/dennisvandehoef/easy-html-creator'
 
-  s.executables = ["start", "generate"]
+  s.executables = ["start", "generate", "init"]
 
   s.add_runtime_dependency 'haml'
   s.add_runtime_dependency 'sass'

@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+
+require 'fileutils'
+
+puts "testing: #{Dir.pwd}/dev_root"
+
+#unless File.directory? "#{Dir.pwd}/dev_root"
+  FileUtils::copy_entry("../dev_root", Dir.pwd)
+#end

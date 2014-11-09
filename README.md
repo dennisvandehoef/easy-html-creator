@@ -19,12 +19,15 @@ Add folliwing to your Gemfile
 
  `gem 'easy-html-editor'`
 
-than  run 
+than  run
 
  `bundle install`
 
 Usage
 =======
+
+ `init`
+ This command will generate a sample dev_root and web_root folder
 
  `generate`
  This command will generate all the files
