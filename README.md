@@ -1,22 +1,45 @@
 easy-html-creator
 =================
+Easy_html_creator is a gem that makes developing static HTML websites easy and joyful.
 
-A simple project for fast HTML file creation, haml+sass+coffee+ruby+bootstrap+jquery -> static html
+Once you learned the joy of haml or sass, it get boring to program in "plain old" html and css.
 
-start it!
+Using our Gem you could generate and maintain multiple static websites and program them in your preferred languages.
+
+Currently supported by our fast and lightweight re-generation server:
+HAML
+Sass (with bootstarp)
+CoffeeScript
+
+We also included the "actionview" gem, to enable the use of rails standard functions like "text_field_tag".
+
+Installation
 =======
- `git clone git@github.com:dennisvandehoef/easy-html-creator.git`
+Add folliwing to your Gemfile
 
- `cd easy-html-creator`
+ `gem 'easy-html-editor'`
+
+than  run
 
  `bundle install`
 
- `bundle exec rake start`
+Usage
+=======
 
-  ...follow the console output and open a webbrowser
+ `initDevRoot`
+ This command will generate a sample dev_root and web_root folder
+
+ `generateFiles`
+ This command will generate all the files
+
+ `startServer`
+ This command will start a webserver with will automatically regenerate all the files
+
 
 TODO
+========
 - clean/refactor code
+- Add tests
 
 Credits
 =======
