@@ -1,4 +1,4 @@
-easy-html-creator
+easy_html_creator
 =================
 Easy_html_creator is a gem that makes developing static HTML websites easy and joyful.
 
@@ -41,11 +41,13 @@ TODO
 - clean/refactor code
 - Add tests
 
+Stats
+========
+
+[![Gem Version](https://badge.fury.io/rb/easy_html_creator.png)](http://badge.fury.io/rb/easy_html_creator)
+
 Credits
 =======
-
-./ruby_files/generate.rb (*in the first commit and/or version 0.0.1*) is based on:
-https://github.com/scarpenter/command_line_haml/blob/master/generate.rb
-
-./ruby_files/server.rb (*in the first commit and/or version 0.0.1*) is based on:
-https://practicingruby.com/articles/implementing-an-http-file-server
+*Files are located in the first commit and/or version 0.0.1*
+- ./ruby_files/generate.rb is based on: https://github.com/scarpenter/command_line_haml/blob/master/generate.rb
+- ./ruby_files/server.rb is based on: https://practicingruby.com/articles/implementing-an-http-file-server
