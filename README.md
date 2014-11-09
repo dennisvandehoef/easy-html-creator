@@ -29,10 +29,10 @@ Usage
  `initDevRoot`
  This command will generate a sample dev_root and web_root folder
 
- `generate`
+ `generateFiles`
  This command will generate all the files
 
- `start`
+ `startServer`
  This command will start a webserver with will automatically regenerate all the files
 
 
