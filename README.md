@@ -17,7 +17,7 @@ Installation
 =======
 Add folliwing to your Gemfile
 
- `gem 'easy-html-editor'`
+ `gem 'easy_html_creator'`
 
 than  run
 
