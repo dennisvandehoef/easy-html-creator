@@ -15,7 +15,7 @@ Sass (with bootstarp)
 CoffeeScript
 
 We also included the 'actionview' gem, to enable the use of rails standard functions like 'text_field_tag'."
-  s.authors     = ["Tom Hanolt", "Dennis van de Hoef"]
+  s.authors     = ["Tom Hanoldt", "Dennis van de Hoef"]
   s.files       = Dir.glob("{bin,lib,dev_root}/**/*") + %w(LICENSE README.md Gemfile CHANGELOG.md)
   s.homepage    = 'https://github.com/dennisvandehoef/easy-html-creator'
 
