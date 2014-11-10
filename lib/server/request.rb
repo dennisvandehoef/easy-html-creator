@@ -14,7 +14,7 @@ module Server
     end
 
     def params
-      return {} unless uri
+      query = URI(uri).query || ''
       @params ||= CGI::parse(URI(uri).query)
     end
 
