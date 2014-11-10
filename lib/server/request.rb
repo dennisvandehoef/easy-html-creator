@@ -15,7 +15,7 @@ module Server
 
     def params
       query = URI(uri).query || ''
-      @params ||= CGI::parse(URI(uri).query)
+      @params ||= CGI::parse(query)
     end
 
     def path
