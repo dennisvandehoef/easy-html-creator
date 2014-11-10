@@ -25,10 +25,10 @@ module Server
           @dispatcher.dispatch(request, response, self)
         rescue Exception => e
           msg = "#{e.backtrace.first}: #{e.message} (#{e.class})", e.backtrace.drop(1).map{|s| "\t#{s}"}
+          log msg
           socket.print '<pre style="max-width: 100%; color: red; width: 100%; font-size:20px; white-space: normal;">'
           socket.print msg
           socket.print '</pre>'
-          log msg
         end
 
         socket.close
