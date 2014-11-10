@@ -32,7 +32,7 @@ Usage
  `generateFiles`
  This command will generate all the files
 
- `startServer`
+ `startServer [host=127.0.0.1] [port=5678]`
  This command will start a webserver with will automatically regenerate all the files
 
 
