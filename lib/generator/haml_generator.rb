@@ -2,6 +2,8 @@ require 'fileutils'
 require 'haml'
 require 'action_view'
 
+require_relative 'helper/activesupport_override.rb'
+
 #require shared helper
 $shared_helper = Dir.glob('./dev_root/shared/helper/*.rb')
 $shared_helper.each do |file| require file end
@@ -52,6 +54,7 @@ module Generator
     attr_reader :example_boolean
 
     include ActionView::Helpers
+    include ActivesupportOverride
 
     $shared_helper.each do |path|
       file_without_ext = path.split('/')[-1].split('.').first

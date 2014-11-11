@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    easy_html_editor (1.0.0)
+    easy_html_creator (1.0.0)
       actionview
       bootstrap-sass
       coffee-script
@@ -47,4 +47,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  easy_html_editor!
+  easy_html_creator!
+  rake
