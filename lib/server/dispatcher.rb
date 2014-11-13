@@ -19,7 +19,11 @@ module Server
       return unless path.include? '.html'
 
       #no html? no reload -> no regenarate
-      server.log "Renew all files"
+      server.log "#######################"
+      server.log "#                     #"
+      server.log "#   Renew all files   #"
+      server.log "#                     #"
+      server.log "#######################"
       Generator::Generator.new.generate
     end
 
