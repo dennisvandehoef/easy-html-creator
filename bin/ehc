@@ -1,0 +1,77 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+
+class CommandTasks
+
+  HELP_MESSAGE = <<-EOT
+    Usage: ehc COMMAND [ARGS]
+
+    The avalible commands are:
+    init      Initialize 'dev_root' and 'web_root' with a demo website
+    generate  Only generate output files  (short-cut alias: "g")
+    server    Start the wserver (short-cut alias: "s")
+
+  EOT
+
+  COMMAND_WHITELIST = %w(init generate server help)
+  def initialize
+    command = parse_command
+    if COMMAND_WHITELIST.include?(command)
+      send(command)
+    else
+      print_error(command)
+    end
+  end
+
+  def parse_command
+    return "" if ARGV.empty?
+
+    command =  ARGV.first
+
+    if command == 'g'
+      command = 'generate'
+    elsif command == 's'
+      command = 'server'
+    end
+    return command
+  end
+
+  def print_error(command)
+    if command.empty?
+      puts 'no command given'
+    else
+      puts "command '#{command}' not valid"
+    end if
+    help
+  end
+
+  def help
+    puts HELP_MESSAGE
+  end
+
+  def init
+    puts 'INI'
+  end
+
+  def generate
+    puts 'GEN'
+  end
+
+  def server
+    puts 'SERV'
+
+    options = {}
+    OptionParser.new do |opts|
+      opts.banner = "Usage: example.rb [options]"
+
+      options[:port] = 5678
+      opts.on( '-p', '--port', 'Port number for the webserver' ) do |port|
+        options[:port] = port
+      end
+
+    end.parse!
+  end
+end
+
+CommandTasks.new
