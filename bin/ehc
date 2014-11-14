@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 
 require 'optparse'
+require 'generator/generator'
+require 'fileutils'
 
 class CommandTasks
 
@@ -11,6 +13,7 @@ class CommandTasks
     init      Initialize 'dev_root' and 'web_root' with a demo website
     generate  Only generate output files  (short-cut alias: "g")
     server    Start the wserver (short-cut alias: "s")
+    help      Shows this message
 
   EOT
 
@@ -51,16 +54,19 @@ class CommandTasks
   end
 
   def init
-    puts 'INI'
+    puts "Creating dev_root and web_root with sample website"
+
+    init_dev_root
+    init_web_root
+
+    puts "All done, use 'ehc server' to start the development server."
   end
 
   def generate
-    puts 'GEN'
+    Generator::Generator.new.generate
   end
 
   def server
-    puts 'SERV'
-
     options = {}
     OptionParser.new do |opts|
       opts.banner = "Usage: example.rb [options]"
@@ -70,7 +76,36 @@ class CommandTasks
         options[:port] = port
       end
 
+      options[:ip] = '127.0.0.1'
+      opts.on( '-i', '--Ip adres', 'Ip adres for the webserver on' ) do |ip|
+        options[:ip] = ip
+      end
+
+      opts.on('-h', '--help', 'Display this screen') do
+        puts opts
+        exit
+      end
     end.parse!
+
+    require 'easy_html_creator'
+  end
+
+  private
+
+  def init_dev_root
+    source_dir = File.expand_path(File.dirname(__FILE__))[0..-4]
+    output_folder = "#{Dir.pwd}/dev_root"
+
+    unless File.directory? output_folder
+      FileUtils::mkdir_p output_folder
+      FileUtils::copy_entry("#{source_dir}dev_root", output_folder)
+    end
+  end
+
+  def init_web_root
+    unless File.directory? "#{Dir.pwd}/web_root"
+      FileUtils::mkdir_p "#{Dir.pwd}/web_root"
+    end
   end
 end
 
