@@ -98,7 +98,7 @@ class EhcCommandTasks
       end
 
       options[:ip] = '127.0.0.1'
-      opts.on( '-i', '--Ip adres', 'Ip adres for the webserver on' ) do |ip|
+      opts.on( '-i', '--ip-adres', 'Ip adres for the webserver on' ) do |ip|
         options[:ip] = ip
       end
 
