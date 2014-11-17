@@ -7,9 +7,9 @@ Once you learned the joy of haml or sass, it get boring to program in "plain old
 Using our Gem you could generate and maintain multiple static websites and program them in your preferred languages.
 
 Currently supported by our fast and lightweight re-generation server:
-HAML
-Sass (with bootstarp)
-CoffeeScript
+ * HAML
+ * Sass (with bootstarp)
+ * CoffeeScript
 
 We also included the "actionview" gem, to enable the use of rails standard functions like "text_field_tag".
 
@@ -19,20 +19,20 @@ Add folliwing to your Gemfile
 
  `gem 'easy_html_creator'`
 
-than  run
+than run
 
  `bundle install`
 
 Usage
 =======
 
- `initDevRoot`
+ `ehc init`
  This command will generate a sample dev_root and web_root folder
 
- `generateFiles`
+ `ehc generate`
  This command will generate all the files
 
- `startServer [host=127.0.0.1] [port=5678]`
+ `ehc server [--ip-adres 127.0.0.1] [--port 5678]`
  This command will start a webserver with will automatically regenerate all the files
 
 

@@ -1,5 +1,0 @@
-#!/usr/bin/env ruby
-
-require 'generator/generator'
-
-Generator::Generator.new.generate

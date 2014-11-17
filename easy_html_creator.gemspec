@@ -19,9 +19,8 @@ We also included the 'actionview' gem, to enable the use of rails standard funct
   s.files       = Dir.glob("{bin,lib,dev_root}/**/*") + %w(LICENSE README.md Gemfile CHANGELOG.md)
   s.homepage    = 'https://github.com/dennisvandehoef/easy-html-creator'
 
-  s.executables = ["startServer",
-                   "generateFiles",
-                   "initDevRoot"]
+  s.executables = ["ehc",
+                   "easy_html_creator"]
 
   s.add_runtime_dependency 'haml'
   s.add_runtime_dependency 'sass'
