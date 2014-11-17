@@ -20,7 +20,6 @@ We also included the 'actionview' gem, to enable the use of rails standard funct
   s.homepage    = 'https://github.com/dennisvandehoef/easy-html-creator'
 
   s.executables = ["ehc",
-                   "EHC",
                    "easy_html_creator"]
 
   s.add_runtime_dependency 'haml'
