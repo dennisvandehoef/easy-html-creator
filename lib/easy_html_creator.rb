@@ -3,4 +3,4 @@ require_relative 'server/dispatcher.rb'
 
 server = Server::Server.new Server::Dispatcher.new
 
-server.listen options[:port], options[:ip]
+server.listen $options[:port], $options[:ip]

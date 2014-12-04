@@ -65,7 +65,7 @@ class EhcCommandTasks
   end
 
   def server
-    options = parse_server_options
+    $options = parse_server_options
     require 'easy_html_creator'
   end
 
