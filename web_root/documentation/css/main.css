@@ -1,0 +1,16 @@
+* {
+  font-family: "PT Sans", Arial;
+  font-size: 13px; }
+
+body {
+  margin: 0;
+  padding: 0; }
+
+.header {
+  border-bottom: 2px solid #000000;
+  padding: 15px;
+  width: 100%; }
+  .header a {
+    margin-right: 25px;
+    color: #000000;
+    font-size: 15px; }
