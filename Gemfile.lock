@@ -42,6 +42,7 @@ GEM
     tilt (2.0.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    yard (0.8.7.6)
 
 PLATFORMS
   ruby
@@ -49,3 +50,4 @@ PLATFORMS
 DEPENDENCIES
   easy_html_creator!
   rake
+  yard
