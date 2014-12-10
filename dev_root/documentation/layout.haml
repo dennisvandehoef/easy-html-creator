@@ -1,0 +1,9 @@
+!!!
+%html{lang: 'de'}
+  %head
+    = render_partial '_metadata'
+    = render_partial '_assets'
+
+  %body{class: body_class}
+    .header= render_partial '_header'
+    .content= yield
