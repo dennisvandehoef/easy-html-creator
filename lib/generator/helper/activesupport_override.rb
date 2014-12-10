@@ -37,4 +37,8 @@ module ActivesupportOverride
   def external_path? path
     path.start_with?('//') || path.start_with?('http')
   end
+
+  def url_for(options = {})
+    return ''
+  end
 end
