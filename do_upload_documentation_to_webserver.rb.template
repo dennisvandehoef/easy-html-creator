@@ -1,0 +1,35 @@
+HOST='hostname'
+USER='username'
+PASS='password'
+
+require 'net/ftp'
+
+def do_upload
+  Dir.chdir "web_root/documentation"
+
+  c = connection()
+  Dir.glob("**/*").each do |f|
+    if File.directory? f
+      puts "create: #{f}"
+
+      # fix as long as the directry is not empty :)
+      if c.nlst(f).empty?
+        c.mkdir(f)
+      end
+    else
+      puts "uploading: #{f}"
+      c.put(f, f)
+    end
+  end
+  c.close
+end
+
+def connection
+  ftp =Net::FTP.new
+  ftp.connect(HOST, 21)
+  ftp.passive = true
+  ftp.login(USER, PASS)
+  ftp
+end
+
+do_upload
