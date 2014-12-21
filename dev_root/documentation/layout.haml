@@ -5,8 +5,7 @@
     = render_partial '_assets'
 
   %body{class: body_class}
-    .header
-      .header-inner= render_partial '_header'
+    .header= render_partial '_header'
     .content= yield
     .footer
-      This website is generate using Easy HTML Creator and Yard.
+      This website is generated using Easy HTML Creator and Yard.
