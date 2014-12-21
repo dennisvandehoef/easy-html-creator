@@ -13,11 +13,11 @@ module Generator
     end
 
     def web_root
-      return 'web_root/'
+      return 'web_root'
     end
 
     def dev_root
-      return 'dev_root/'
+      return 'dev_root'
     end
 
     def projects_folder
