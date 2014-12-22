@@ -1,3 +1,10 @@
+1.1.0
+=================
+- Add easy commands to start the server (`ehc server`) and to parse the dev_root (`ehc generate`) 
+- Add the ActiveSupport gem with overrides to fix Rails dependicies
+- Make the demo website better
+- Add a documentation website t the dev_root (it's also hosted here: http://easyhtmlcreator.bplaced.net/)
+
 1.0.0
 =================
 We released our project as a gem (https://rubygems.org/gems/easy_html_creator)
