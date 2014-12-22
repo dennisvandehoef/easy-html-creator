@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'easy_html_creator'
-  s.version     = '1.0.0'
+  s.version     = '1.1.0'
   s.licenses    = ['MIT']
   s.summary     = "A simple project for fast and easy HTML website createmend"
   s.description = "Easy_html_creator is a gem that makes developing static HTML websites easy and joyful.
@@ -25,7 +25,6 @@ We also included the 'actionview' gem, to enable the use of rails standard funct
   s.add_runtime_dependency 'haml'
   s.add_runtime_dependency 'sass'
   s.add_runtime_dependency 'coffee-script'
-  s.add_runtime_dependency 'rake'
   s.add_runtime_dependency 'bootstrap-sass'
   s.add_runtime_dependency 'actionview'
 end
