@@ -32,7 +32,6 @@ module Server
       server.log path
 
       regenerate_files_if(path, server)
-
       # Make sure the file exists and is not a directory
       # before attempting to open it.
       if File.exist?(path) && !File.directory?(path)

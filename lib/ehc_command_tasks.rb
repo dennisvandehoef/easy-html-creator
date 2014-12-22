@@ -93,12 +93,12 @@ class EhcCommandTasks
       opts.banner = "Usage: example.rb [options]"
 
       options[:port] = 5678
-      opts.on( '-p', '--port', 'Port number for the webserver' ) do |port|
+      opts.on( '-p=n', '--port=n', 'Port number for the webserver' ) do |port|
         options[:port] = port
       end
 
       options[:ip] = '127.0.0.1'
-      opts.on( '-i', '--ip-adres', 'Ip adres for the webserver on' ) do |ip|
+      opts.on( '-i=s', '--ip-adres=s', 'Ip adres for the webserver on' ) do |ip|
         options[:ip] = ip
       end
 

@@ -1,0 +1,41 @@
+%h1
+  dev_root tips & tricks
+
+%h2
+  The 'public' directory
+
+%p
+  If you whant to add plain JavaScript or SS files, or just whants to add a directory with images, this is the place to be.
+
+%p
+  Every project has its own 'public' directory.
+  %br
+  When EHC parses the project, it will copy all the content from thuis directory to the root of your project in the web_root.
+
+%h2
+  Use bootrstap mixins in SASS
+
+%p
+  Wenn you use SASS, we automatticly load the bootstrap  mixins.
+  %br
+  This happens on the background, when parsing your code.
+  Therefore you can directy use code as 'make-row()' in your SASS-file.
+
+%h2
+  Ruby-helpers
+
+%p
+  It might be whished to create a Helper in Ruby to make the genration of some defaults easy.
+  %br
+  Before parsing your HAML-files (or at startup from the server) EHC can dynamicly load your Helpers.
+
+%p
+  EHC searches in 2 directories for helper-files '/dev_root/shared/helpers/' (for helpers you whant to use in multiple projects) and in '/dev_root/[project]/helper/'.
+
+%h2
+  Active Support
+
+%p
+  There is no need to create helpers with Active Support functionality.
+  %br
+  EHC has Active Support already included, with some overrides to make it work without Rails.

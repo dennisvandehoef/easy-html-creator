@@ -9,7 +9,7 @@ module Server
       @dispatcher = dispatcher
     end
 
-    def listen(port, host='127.0.0.1')
+    def listen(port, host)
       server = TCPServer.new(host, port)
       log "Server binded to http://#{host}:#{port}"
 

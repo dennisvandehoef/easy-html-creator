@@ -1,3 +1,5 @@
+require 'pry'
+
 module ActivesupportOverride
   def stylesheet_link_tag(path, media='screen')
     '<link href="'+path_to_css(path)+'" media="'+media+'" rel="stylesheet" type="text/css" />'
@@ -36,5 +38,9 @@ module ActivesupportOverride
 
   def external_path? path
     path.start_with?('//') || path.start_with?('http')
+  end
+
+  def url_for(options = '')
+   return options
   end
 end
