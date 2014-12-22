@@ -1,6 +1,6 @@
 easy_html_creator
 =================
-Easy_html_creator is a gem that makes developing static HTML websites easy and joyful.
+easy_html_creator is a gem that makes developing static HTML websites easy and joyful.
 
 Once you learned the joy of haml or sass, it get boring to program in "plain old" html and css.
 
@@ -12,6 +12,8 @@ Currently supported by our fast and lightweight re-generation server:
  * CoffeeScript
 
 We also included the "actionview" gem, to enable the use of rails standard functions like "text_field_tag".
+
+Extended doumentation, can be found here: http://easyhtmlcreator.bplaced.net
 
 Installation
 =======
