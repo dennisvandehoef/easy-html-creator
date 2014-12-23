@@ -16,7 +16,7 @@ CoffeeScript
 
 We also included the 'actionview' gem, to enable the use of rails standard functions like 'text_field_tag'."
   s.authors     = ["Tom Hanoldt", "Dennis van de Hoef"]
-  s.files       = Dir.glob("{bin,lib,dev_root}/**/*") + %w(LICENSE README.md Gemfile CHANGELOG.md)
+  s.files       = Dir.glob("{bin,lib,dev_root}/**/*") + %w(LICENSE README.md CHANGELOG.md)
   s.homepage    = 'http://easyhtmlcreator.bplaced.net'
 
   s.executables = ["ehc",
