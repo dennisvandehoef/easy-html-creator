@@ -1,5 +1,3 @@
-require 'pry'
-
 module ActivesupportOverride
   def stylesheet_link_tag(path, media='screen')
     '<link href="'+path_to_css(path)+'" media="'+media+'" rel="stylesheet" type="text/css" />'
