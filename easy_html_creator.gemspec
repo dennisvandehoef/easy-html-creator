@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'easy_html_creator'
-  s.version     = '1.1.0'
+  s.version     = '1.1.1'
   s.licenses    = ['MIT']
   s.summary     = "A simple project for fast and easy HTML website createmend"
   s.description = "Easy_html_creator is a gem that makes developing static HTML websites easy and joyful.
@@ -16,7 +16,8 @@ CoffeeScript
 
 We also included the 'actionview' gem, to enable the use of rails standard functions like 'text_field_tag'."
   s.authors     = ["Tom Hanoldt", "Dennis van de Hoef"]
-  s.files       = Dir.glob("{bin,lib,dev_root}/**/*") + %w(LICENSE README.md Gemfile CHANGELOG.md)
+  s.email       = ['monotom@gmail.com', 'dennisvdhoef@gmail.com']
+  s.files       = Dir.glob("{bin,lib,dev_root}/**/*") + %w(LICENSE README.md CHANGELOG.md)
   s.homepage    = 'http://easyhtmlcreator.bplaced.net'
 
   s.executables = ["ehc",
@@ -27,4 +28,7 @@ We also included the 'actionview' gem, to enable the use of rails standard funct
   s.add_runtime_dependency 'coffee-script'
   s.add_runtime_dependency 'bootstrap-sass'
   s.add_runtime_dependency 'actionview'
+
+  s.add_development_dependency 'rake'
+  s.add_development_dependency 'yard'
 end
