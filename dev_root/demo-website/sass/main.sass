@@ -1,3 +1,25 @@
+@import "bootstrap/variables"
+@import "bootstrap/mixins"
+@import "mixins/css3"
+@import "mixins/helper"
+@import "mixins/normalize"
+
+*
+  font-family: 'Open SANS',sans-serif
+
++headlines
+  +text-shadow(1px, 1px, 3px, #555)
+
 h1
-  .test1
-    font-size: 20px
+  font-size: 42px
+  +bold
+
+img
+  +transition(all, .3s, ease-in-out)
+
+.semibold
+  font-weight: 600
+
+.content-left, .content-right
+  +make-xs-column(12)
+  +make-sm-column(6)

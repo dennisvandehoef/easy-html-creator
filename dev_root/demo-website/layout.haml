@@ -1,10 +1,13 @@
 !!!
 %html{lang: 'de'}
   %head
-    = render_partial '_metadata'
-    = render_partial '_assets'
+    = render_partial '_assets.metadata'
+    = render_partial '_assets.stylesheets'
+    = render_partial '_assets.javascripts'
 
   %body{class: body_class}
     = render_partial '_header'
-    = yield
+    .container
+      = yield
     = render_partial '_footer'
+

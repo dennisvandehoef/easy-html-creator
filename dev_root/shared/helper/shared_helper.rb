@@ -1,5 +1,5 @@
 module SharedHelper
-  def sharedhelper_method
-    'sharedhelper_method'
+  def copyright(who)
+    "© #{Time.new.year} by #{who}"
   end
 end
