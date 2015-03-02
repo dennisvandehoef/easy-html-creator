@@ -4,6 +4,8 @@ require 'sass'
 #just require bootsrap and it will be in the sass path
 require 'bootstrap-sass'
 
+::Sass.load_paths << './dev_root/shared/sass'
+
 module Generator
   class SassGenerator
     def generate input_folder, output_folder
