@@ -27,7 +27,8 @@ module Server
           msg = "#{e.backtrace.first}: #{e.message} (#{e.class})", e.backtrace.drop(1).map{|s| "\t#{s}"}
           log msg
           socket.print '<pre style="max-width: 100%; color: red; width: 100%; font-size:20px; white-space: normal;">'
-          socket.print msg
+
+          socket.print msg.join("<br>")
           socket.print '</pre>'
         end
 

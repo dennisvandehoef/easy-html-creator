@@ -26,7 +26,7 @@ module Generator
     def compile file, layout, input_folder, output_folder
       scope = file.split('/')[-1].split('.').first
       layout = Haml::Engine.new(File.read(layout), @haml_options)
-      c = Context.new @example_boolean, scope, @haml_options, input_folder, output_folder
+      c = Context.new(@example_boolean, scope, @haml_options, input_folder, output_folder)
 
       # If the file being processed by Haml contains a yield statement, the block passed to
       # "render" will be called when it's hit.
@@ -35,6 +35,8 @@ module Generator
         body = Haml::Engine.new(File.read(file), @haml_options)
         body.render(c)
       end
+    rescue Exception => e
+      raise $!, "#{$!} TEMPLATE::#{file} ", $!.backtrace
     end
 
     def write file, content
@@ -92,6 +94,8 @@ module Generator
       else
         nil
       end
+    rescue Exception => e
+      raise $!, "#{$!} PARTIAL::#{file} ", $!.backtrace
     end
   end
 end
