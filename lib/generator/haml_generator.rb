@@ -4,10 +4,6 @@ require 'action_view'
 
 require_relative 'helper/activesupport_override.rb'
 
-#require shared helper
-$shared_helper = Dir.glob('./dev_root/shared/helper/*.rb')
-$shared_helper.each do |file| require file end
-
 module Generator
   class HamlGenerator
     def initialize()
@@ -56,21 +52,20 @@ module Generator
     include ActionView::Helpers
     include ActivesupportOverride
 
-    $shared_helper.each do |path|
-      file_without_ext = path.split('/')[-1].split('.').first
-      module_name      = file_without_ext.classify
-      STDERR.puts 'loading helper -> '+module_name
-      include module_name.constantize
-    end
-
     def initialize(example_boolean, scope, options, input_folder, output_folder)
       @example_boolean = example_boolean
       @scope = scope
       @options = options
       @input_folder = input_folder
       @output_folder = output_folder
-      Dir.glob("./#{input_folder}/helper/*.rb").each do |path|
-        require path
+
+      load_helper('./dev_root/shared/helper/*.rb')
+      load_helper("./#{input_folder}/helper/*.rb")
+    end
+
+    def load_helper(folder)
+      Dir.glob(folder).each do |path|
+        load path
         file_without_ext = path.split('/')[-1].split('.').first
         module_name      = file_without_ext.classify
         STDERR.puts 'loading project helper -> '+module_name
