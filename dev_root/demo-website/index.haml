@@ -1,19 +1,70 @@
-%h1.test1
-  headline
+%h1
+  easy-html-creator - Why we call it easy?
+
+%h2.semibold
+  Do it the ruby way
 
 %p
-  Here is the index page content.
-%p
-  And more index content.
+  Layouts, templates, partials, helpers and static assets.
 
+%h2.semibold
+  sass, haml, coffee
 %p
-  this comes from shared/shared_helper.rb:
-  = sharedhelper_method
+  We use sass, haml and coffe script. We also include
+  = action_view_link
+  for easier displaying images for ex.
+  %br
+  %code
+    \= image_tag 'easy-way.jpg'
+  %br
+  = image_tag('easy-way.jpg', class: 'img-thumbnail')
 
+%h2.semibold
+  DRY - Shared Helper
 %p
-  this comes from test1/test_helper.rb:
-  = testhelper_method
+  There are shared helper for ruby, sass and coffee. So Dont Repeat Your self! The copyright for ex.
+  %br
+  %code
+    \= copyright 'ehc'
+  %br
+  = copyright 'ehc'
 
-%p
-  and that's why we say, do it the easy-html-creator way!
-  = image_tag 'easy-way.jpg'
+%h2.semibold
+  For sass we offer mixins for ...
+
+.content-left
+  %h3
+    bootsrap, reset and normalize
+
+  %pre.code
+    = preserve do
+      :escaped
+        @import "bootstrap/variables"
+        @import "bootstrap/mixins"
+        @import "mixins/normalize"
+
+        *
+          font-family: 'Open SANS',sans-serif
+
+        .content-left, .content-right
+          +make-xs-column(12)
+          +make-sm-column(6)
+
+.content-right
+  %h3
+    css3 and helper mixins
+
+  %pre.code
+    = preserve do
+      :escaped
+        @import "mixins/css3"
+        @import "mixins/helper"
+
+        +headlines
+          +text-shadow(1px, 1px, 3px, #555)
+
+        h1
+          +bold
+
+        img
+          +transition(all, .3s, ease-in-out)
