@@ -59,3 +59,12 @@
 
 @mixin bold
   font-weight: bold
+
+@mixin zoom-on-hover
+  +inline-block
+  cursor: pointer
+  +transition(transform 0.3s ease-out)
+  -webkit-transform: translateZ(0)
+  -webkit-font-smoothing: antialiased
+  &:hover, &:focus, &:active
+    +transform(scale(1.03))
