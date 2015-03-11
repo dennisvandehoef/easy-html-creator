@@ -68,3 +68,42 @@
 
         img
           +transition(all, .3s, ease-in-out)
+
+%h2.semibold
+  Special sass mixins
+
+.content-left
+  %h3
+    buttons
+
+  %p
+    .button.green
+      green button
+    .button.magenta
+      magenta button
+
+  %pre.code
+    = preserve do
+      :escaped
+        @import "mixins/buttons"
+
+        .button.magenta
+          +make-magenta-button()
+          +zoom-on-hover
+
+.content-right
+  %h3
+    arrows
+
+  %p
+    .arrow-up
+    .arrow-down
+
+  %pre.code
+    = preserve do
+      :escaped
+        @import "mixins/arrows"
+
+        .arrow-up
+          +arrow-up(60px, 20px, #62bc19)
+          +inline-block

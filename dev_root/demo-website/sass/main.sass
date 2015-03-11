@@ -3,6 +3,8 @@
 @import "mixins/css3"
 @import "mixins/helper"
 @import "mixins/normalize"
+@import "mixins/buttons"
+@import "mixins/arrows"
 
 *
   font-family: 'Open SANS',sans-serif
@@ -23,3 +25,20 @@ img
 .content-left, .content-right
   +make-xs-column(12)
   +make-sm-column(6)
+
+.button.magenta
+  +make-magenta-button()
+  +zoom-on-hover
+
+.button.green
+  +make-green-button()
+  +zoom-on-hover
+
+.arrow-up
+  +arrow-up(60px, 20px, #62bc19)
+  +inline-block
+
+.arrow-down
+  +arrow-down(40px, 40px, #c83c29)
+  +inline-block
+
