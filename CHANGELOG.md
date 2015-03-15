@@ -1,9 +1,19 @@
+1.1.1
+=================
+- Add mixins for reset, resize, buttons, arrows and extend existing helper mixins
+- Add bower.json resolving in public folder
+- Add offline demo website with bower dependencies
+- Add file_exists to helper methods
+- reload ruby helpers on each request, so you dont need to restart the server
+- better exceptions for partials
+- sass inlcude path for shared sass files now starts from dev_root/shared/sass
+
 1.1.0
 =================
-- Add easy commands to start the server (`ehc server`) and to parse the dev_root (`ehc generate`) 
+- Add easy commands to start the server (`ehc server`) and to parse the dev_root (`ehc generate`)
 - Add the ActiveSupport gem with overrides to fix Rails dependicies
 - Make the demo website better
-- Add a documentation website t the dev_root (it's also hosted here: http://easyhtmlcreator.bplaced.net/)
+- Add a documentation website to the dev_root (it's also hosted here: http://easyhtmlcreator.bplaced.net/)
 
 1.0.0
 =================
