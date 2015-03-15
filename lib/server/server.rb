@@ -11,7 +11,7 @@ module Server
 
     def listen(port, host)
       server = TCPServer.new(host, port)
-      log "Server binded to http://#{host}:#{port}"
+      log "Server bound to http://#{host}:#{port}"
 
       loop do
         socket       = server.accept
