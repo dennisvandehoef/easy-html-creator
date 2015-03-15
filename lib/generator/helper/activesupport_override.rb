@@ -15,23 +15,27 @@ module ActivesupportOverride
     '<meta http-equiv="'+type+'" content="'+content+'" />'
   end
 
-  def link_tag(source, relation, type)
-    '<link rel="'+relation+'" href="'+source+'" type="'+type+'" />'
+  def link_tag(source, relation, type='')
+    type = " type='#{type}'" if type
+    '<link rel="'+relation+'" href="'+source+'"'+type+'/>'
   end
 
   def path_to_css(path)
     return path if external_path?(path)
-    "css/#{path}"
+    return "css/#{path}" if file_exists? "css/#{path}"
+    path
   end
 
   def path_to_js(path)
     return path if external_path? path
-    "js/#{path}"
+    return "js/#{path}" if file_exists? "js/#{path}"
+    path
   end
 
   def path_to_image(path)
     return path if external_path? path
-    "images/#{path}"
+    return "images/#{path}" if file_exists? "images/#{path}"
+    path
   end
 
   def external_path? path
@@ -40,5 +44,9 @@ module ActivesupportOverride
 
   def url_for(options = '')
    return options
+  end
+
+  def file_exists?(relative_path)
+    File.exists?("#{@output_folder}/#{relative_path}")
   end
 end
