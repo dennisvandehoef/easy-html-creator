@@ -7,6 +7,7 @@
 - reload ruby helpers on each request, so you dont need to restart the server
 - better exceptions for partials
 - sass inlcude path for shared sass files now starts from dev_root/shared/sass
+- list directory contents if there is no index.html
 
 1.1.0
 =================
