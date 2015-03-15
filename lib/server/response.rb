@@ -33,7 +33,7 @@ module Server
     end
 
     def send_404
-      code    = 404
+      code    = '404 Not Found'
       message = "404: File '#{@request.path}' not found\n"
       log "404: File not found #{@request.path}"
 
@@ -70,9 +70,9 @@ module Server
       end
     end
 
-    def send(code, message)
-      print "HTTP/1.1 #{code} Not Found\r\n" +
-             "Content-Type: text/plain\r\n" +
+    def send(code, message, type='text/html')
+      print "HTTP/1.1 #{code}\r\n" +
+             "Content-Type: #{type}\r\n" +
              "Content-Length: #{message.size}\r\n" +
              "Connection: close\r\n" +
              "\r\n" +

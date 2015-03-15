@@ -4,15 +4,39 @@ module Server
   class Dispatcher
     WEB_ROOT = 'web_root'
 
-    def execute_php(path, params)
-      params_s = ''
-      params.each do |key, value|
-        params_s+=key+'='+value[0]+' '
+    def dispatch(request, response, server)
+      path = request.path
+
+      regenerate_files_if(path, server)
+
+      return response.send_404 unless File.exist?(path)
+
+      if !File.directory?(path)
+        if path.include? '.php'
+          response.send(200, execute_php(path, request.params))
+        else
+          response.send_file path
+        end
+      else
+        if File.exist?("#{path}/index.html")
+          response.send_301 "#{path}/index.html"
+        else
+          response.send(200, list_dir(path, server))
+        end
       end
-      executors = ['php', 'php-cgi', 'php-fpm']
-      cmd = "#{executors[0]} #{path} #{params_s}"
-      STDERR.puts(cmd)
-      %x[ #{cmd} ]
+    end
+
+    def list_dir(path, server)
+      content = ''
+
+      Dir.glob("#{path}/*/").each do |f|
+        regenerate_files_if("#{f}index.html", server) if File.exists?("#{f}index.html")
+        f_name = File.basename(f)
+        f_path = "#{path}/#{f_name}".sub("#{WEB_ROOT}/", '')
+        content += "<li><a href='#{f_path}'>#{f_name}</a></li>" if File.directory?(path)
+      end
+
+      "<!DOCTYPE html><html><head><body><h1>#{path}</h1><ul>#{content}</ul><a target='_blank' href='https://github.com/dennisvandehoef/easy-html-creator'>ehc on Github</a></body></html>"
     end
 
     def regenerate_files_if(path, server)
@@ -27,29 +51,15 @@ module Server
       Generator::Generator.new.generate
     end
 
-    def dispatch(request, response, server)
-      path = request.path
-      server.log path
-
-      regenerate_files_if(path, server)
-      # Make sure the file exists and is not a directory
-      # before attempting to open it.
-      if File.exist?(path) && !File.directory?(path)
-        if path.include? '.php'
-          response.send(200, execute_php(path, request.params))
-        else
-          response.send_file path
-        end
-      elsif File.exist?(path) && File.directory?(path)
-        path = "#{path}/index.html"
-        if File.exist?(path) && !File.directory?(path)
-          response.send_301 path
-        else
-          response.send_404
-        end
-      else
-        response.send_404
+    def execute_php(path, params)
+      params_s = ''
+      params.each do |key, value|
+        params_s += "#{key}=#{value[0]} "
       end
+      executors = ['php', 'php-cgi', 'php-fpm']
+      cmd = "#{executors[0]} #{path} #{params_s}"
+      STDERR.puts(cmd)
+      %x[ #{cmd} ]
     end
   end
 end
