@@ -3,6 +3,7 @@ require_relative '../generator/generator.rb'
 module Server
   class Dispatcher
     WEB_ROOT = 'web_root'
+    DEV_ROOT = 'dev_root'
 
     def dispatch(request, response, server)
       path = request.path
@@ -28,9 +29,11 @@ module Server
 
     def list_dir(path, server)
       content = ''
+      Dir.glob("#{path.gsub(WEB_ROOT, DEV_ROOT)}/*/").each do |f|
+        f = f.gsub(DEV_ROOT, WEB_ROOT)
 
-      Dir.glob("#{path}/*/").each do |f|
-        regenerate_files_if("#{f}index.html", server) if File.exists?("#{f}index.html")
+        regenerate_files_if("#{f}index.html", server)
+
         f_name = File.basename(f)
         f_path = "#{path}/#{f_name}".sub("#{WEB_ROOT}/", '')
         content += "<li><a href='#{f_path}'>#{f_name}</a></li>" if File.directory?(path)
