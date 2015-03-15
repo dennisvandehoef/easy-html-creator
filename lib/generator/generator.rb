@@ -43,9 +43,10 @@ module Generator
         project_output_folder = project_web_folder(project_name)
 
         @structure.generate project_folder, project_output_folder
-        @haml.generate      project_folder, project_output_folder
         @coffee.generate    "#{project_folder}/coffee", "#{project_output_folder}/js"
         @sass.generate      "#{project_folder}/sass"  , "#{project_output_folder}/css"
+
+        @haml.generate      project_folder, project_output_folder
       end
     end
   end
