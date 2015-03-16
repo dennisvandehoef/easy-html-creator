@@ -1,4 +1,4 @@
-1.1.1
+1.2.0
 =================
 - Add mixins for reset, resize, buttons, arrows and extend existing helper mixins
 - Add bower.json resolving in public folder
@@ -8,6 +8,10 @@
 - better exceptions for partials
 - sass inlcude path for shared sass files now starts from dev_root/shared/sass
 - list directory contents if there is no index.html
+
+1.1.1
+=================
+- We removed a forgotten ‘Require ‘pry”
 
 1.1.0
 =================
