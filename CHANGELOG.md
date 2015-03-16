@@ -4,9 +4,9 @@
 - Add bower.json resolving in public folder
 - Add offline demo website with bower dependencies
 - Add file_exists to helper methods
-- reload ruby helpers on each request, so you dont need to restart the server
+- reload ruby helpers on each request, so you don't need to restart the server
 - better exceptions for partials
-- sass inlcude path for shared sass files now starts from dev_root/shared/sass
+- sass include path for shared sass files now starts from dev_root/shared/sass
 - list directory contents if there is no index.html
 
 1.1.1
