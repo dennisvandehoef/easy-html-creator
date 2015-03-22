@@ -45,8 +45,4 @@ module ActivesupportOverride
   def url_for(options = '')
    return options
   end
-
-  def file_exists?(relative_path)
-    File.exists?("#{@output_folder}/#{relative_path}")
-  end
 end

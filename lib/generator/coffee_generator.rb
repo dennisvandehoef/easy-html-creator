@@ -1,26 +1,23 @@
-require 'fileutils'
-require 'coffee-script'
+require_relative 'base.rb'
 
 module Generator
-  class CoffeeGenerator
-    def generate input_folder, output_folder
-      Dir.glob("#{input_folder}/*.coffee").select do |file|
-        next unless File.file? file
+  class CoffeeGenerator < Generator::Base
+    def generate(input_folder, output_folder)
+      input_folder  = "#{input_folder}/coffee"
+      output_folder = "#{output_folder}/js"
 
-        result = compile(file)
-        file_name = file.split('/')[-1].gsub('.coffee', '.js')
-        write File.join(output_folder, file_name), result
+      Dir.glob("#{input_folder}/*.coffee").select do |input_file|
+        next unless File.file? input_file
+
+        output_file_name = input_file.split('/')[-1].gsub('.coffee', '.js')
+        outpu_file       = File.join(output_folder, output_file_name)
+
+        compile_file(input_file, outpu_file)
       end
     end
 
-    def compile file
-      CoffeeScript.compile(File.read(file))
-    end
-
-    def write file, content
-      File.open(file, "w") do |f|
-        f.write content
-      end
+    def compile(input, *args)
+      CoffeeScript.compile(input)
     end
   end
 end

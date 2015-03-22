@@ -5,6 +5,10 @@ module Server
     WEB_ROOT = 'web_root'
     DEV_ROOT = 'dev_root'
 
+    def initialize
+      @generator = Generator::Generator.new
+    end
+
     def dispatch(request, response, server)
       path = request.path
 
@@ -44,6 +48,7 @@ module Server
 
     def regenerate_files_if(path, server)
       return unless path.include? '.html'
+      return if path.include? 'bower_components'
 
       #no html? no reload -> no regenarate
       server.log "#######################"
@@ -51,7 +56,7 @@ module Server
       server.log "#   Renew all files   #"
       server.log "#                     #"
       server.log "#######################"
-      Generator::Generator.new.generate
+      @generator.generate
     end
 
     def execute_php(path, params)

@@ -1,5 +1,5 @@
-require 'fileutils'
 require 'sass'
+require_relative 'base.rb'
 
 #just require bootsrap and it will be in the sass path
 require 'bootstrap-sass'
@@ -7,27 +7,25 @@ require 'bootstrap-sass'
 ::Sass.load_paths << './dev_root/shared/sass'
 
 module Generator
-  class SassGenerator
-    def generate input_folder, output_folder
-      Dir.glob("#{input_folder}/*.sass").select do |file|
-        file_name = file.split('/')[-1]
-        next unless File.file? file and file_name[0] != '_'
+  class SassGenerator < Generator::Base
+    def generate(input_folder, output_folder)
+      input_folder  = "#{input_folder}/sass"
+      output_folder = "#{output_folder}/css"
 
-        result = compile(file)
-        file_name = file.split('/')[-1].gsub('.sass', '.css')
-        write File.join(output_folder, file_name), result
+      Dir.glob("#{input_folder}/*.sass").select do |input_file|
+        file_name = input_file.split('/')[-1]
+        next unless File.file? input_file and file_name[0] != '_'
+
+        output_file_name = file_name.gsub('.sass', '.css')
+        output_file      = File.join(output_folder, output_file_name)
+
+        compile_file(input_file, output_file)
       end
     end
 
-    def compile file
-      engine = Sass::Engine.new(File.read(file))
+    def compile(input, *args)
+      engine = Sass::Engine.new(input)
       engine.render
-    end
-
-    def write file, content
-      File.open(file, "w") do |f|
-        f.write content
-      end
     end
   end
 end
