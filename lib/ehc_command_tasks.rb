@@ -51,12 +51,12 @@ class EhcCommandTasks
   end
 
   def init
-    puts "Creating dev_root and web_root with sample website"
+    puts "Creating dev_root and web_root with sample websites"
 
     init_dev_root
     init_web_root
 
-    puts "All done, use 'ehc server' to start the development server."
+    puts "All done, use \e[32m'ehc server'\e[0m to start the development server."
   end
 
   def generate

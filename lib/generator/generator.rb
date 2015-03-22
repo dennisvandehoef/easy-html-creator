@@ -7,10 +7,10 @@ require_relative 'bower_generator.rb'
 module Generator
   class Generator
     def initialize
-      @generators = [ StructureGenerator.new,
+      @generators = [ BowerGenerator.new,
+                      StructureGenerator.new,
                       CoffeeGenerator.new,
                       SassGenerator.new,
-                      BowerGenerator.new,
                       HamlGenerator.new ]
     end
 
@@ -42,6 +42,7 @@ module Generator
         project_name = project_folder.split('/')[-1]
         project_output_folder = project_web_folder(project_name)
 
+        puts "generating: \e[32m#{project_output_folder}\e[0m"
         @generators.each do |generator|
           generator.generate(project_folder, project_output_folder)
         end

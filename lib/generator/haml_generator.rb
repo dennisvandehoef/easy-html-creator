@@ -72,7 +72,7 @@ module Generator
         load path
         file_without_ext = path.split('/')[-1].split('.').first
         module_name      = file_without_ext.classify
-        STDERR.puts 'loading project helper -> '+module_name
+        STDERR.puts '->loading project helper: '+module_name
         self.class.send(:include, module_name.constantize)
       end
     end
