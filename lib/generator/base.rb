@@ -12,7 +12,7 @@ module Generator
       return unless changed? (input_file)
 
       #if args[0] is a file, it is the output file
-      if args.length
+      if args.length > 0
         write(args[0], compile(File.read(input_file), *args))
       else
         compile(input_file, *args)
