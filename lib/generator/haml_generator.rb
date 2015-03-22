@@ -3,46 +3,47 @@ require 'haml'
 require 'action_view'
 
 require_relative 'helper/activesupport_override.rb'
+require_relative 'helper/asset_helper.rb'
+require_relative 'base.rb'
 
 module Generator
-  class HamlGenerator
+  class HamlGenerator < Generator::Base
     def initialize()
       @example_boolean = false
       @haml_options = { attr_wrapper: '"', format: :html5 }
     end
 
-    def generate input_folder, output_folder
-      layout = "#{input_folder}/layout.haml"
+    def generate(input_folder, output_folder)
+      layout_path = "#{input_folder}/layout.haml"
+      layout      = Haml::Engine.new(File.read(layout_path), @haml_options)
 
-      Dir.glob("#{input_folder}/*.haml").select do |file|
-        next unless File.file? file and !file.include? 'layout.haml'
+      Dir.glob("#{input_folder}/*.haml").select do |input_file|
+        next unless File.file? input_file and !input_file.include? 'layout.haml'
 
-        result    = compile(file, layout, input_folder, output_folder)
-        file_name = file.split('/')[-1].gsub('.haml', '.html')
-        write File.join(output_folder, file_name), result
+        output_file_name = input_file.split('/')[-1].gsub('.haml', '.html')
+        output_file      = File.join(output_folder, output_file_name)
+        scope            = output_file_name.split('.').first
+        context          = Context.new(@example_boolean, scope, @haml_options,
+                                      input_folder, output_folder)
+
+        compile_file(input_file, output_file, layout, context, scope)
       end
     end
 
-    def compile file, layout, input_folder, output_folder
-      scope = file.split('/')[-1].split('.').first
-      layout = Haml::Engine.new(File.read(layout), @haml_options)
-      c = Context.new(@example_boolean, scope, @haml_options, input_folder, output_folder)
-
+    def compile(input, output_file, layout, context, scope)
       # If the file being processed by Haml contains a yield statement, the block passed to
       # "render" will be called when it's hit.
-      layout.render c, body_class: scope do
+      layout.render context, body_class: scope do
         # Render the actual page contents in place of the call to "yield".
-        body = Haml::Engine.new(File.read(file), @haml_options)
-        body.render(c)
+        body = Haml::Engine.new(input, @haml_options)
+        body.render(context)
       end
     rescue Exception => e
-      raise $!, "#{$!} TEMPLATE::#{file} ", $!.backtrace
+      raise $!, "#{$!} TEMPLATE::#{output_file} ", $!.backtrace
     end
 
-    def write file, content
-      File.open(file, "w") do |f|
-        f.write content
-      end
+    def changed?(path)
+      true #allways recompile haml because of partials etc.
     end
   end
 
@@ -53,13 +54,14 @@ module Generator
 
     include ActionView::Helpers
     include ActivesupportOverride
+    include AssetHelper
 
     def initialize(example_boolean, scope, options, input_folder, output_folder)
       @example_boolean = example_boolean
-      @scope = scope
-      @options = options
-      @input_folder = input_folder
-      @output_folder = output_folder
+      @scope           = scope
+      @options         = options
+      @input_folder    = input_folder
+      @output_folder   = output_folder
 
       load_helper('./dev_root/shared/helper/*.rb')
       load_helper("./#{input_folder}/helper/*.rb")
@@ -95,7 +97,7 @@ module Generator
         nil
       end
     rescue Exception => e
-      raise $!, "#{$!} PARTIAL::#{file} ", $!.backtrace
+      raise $!, "#{$!} PARTIAL::#{file_name} ", $!.backtrace
     end
   end
 end
