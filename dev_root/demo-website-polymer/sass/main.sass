@@ -1,0 +1,23 @@
+@import "bootstrap/variables"
+@import "bootstrap/mixins"
+@import "mixins/css3"
+@import "mixins/helper"
+@import "mixins/normalize"
+@import "mixins/buttons"
+@import "mixins/arrows"
+
+*
+  font-family: 'Open SANS',sans-serif
+
++headlines
+  +text-shadow(1px, 1px, 3px, #555)
+
+h1
+  font-size: 42px
+  +bold
+
+img
+  +transition(all, .3s, ease-in-out)
+
+.semibold
+  font-weight: 600

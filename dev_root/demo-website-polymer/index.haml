@@ -1,0 +1,60 @@
+%h1
+  Polymer demo website
+
+%p
+  Demo from
+  = link_to 'www.polymer-project.org', 'https://www.polymer-project.org/0.5/docs/polymer/databinding.html', target: 'blank'
+
+%greeting-tag
+
+%h1
+  template code
+
+%pre.code
+  = preserve do
+    :escaped
+      = link_tag 'bower_components/polymer/polymer.html', 'import', ''
+      = link_tag 'bower_components/core-ajax/core-ajax.html', 'import', ''
+
+      %polymer-element{name: "greeting-tag"}
+        %template
+          %h1 edit
+          %ul
+            %template{repeat: "{{s in salutations}}"}
+              %li
+                {{s.what}}:
+                %input{type: "text", value: "{{s.who}}"}
+
+          %h1 view
+          %ul
+            %template{repeat: "{{s in salutations}}"}
+              %li
+                {{s.what}}: "{{s.who}}"
+
+          = with_sass do
+            :plain
+              input
+                color: green
+
+        = with_coffee do
+          :plain
+            Polymer 'greeting-tag',
+              ready: ->
+                @salutations = [
+                  {
+                    what: 'Hello'
+                    who: 'World'
+                  }
+                  {
+                    what: 'Goodbye'
+                    who: 'DOM APIs'
+                  }
+                  {
+                    what: 'Hello'
+                    who: 'Declarative'
+                  }
+                  {
+                    what: 'Goodbye'
+                    who: 'Imperative'
+                  }
+                ]
