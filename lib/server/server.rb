@@ -11,21 +11,21 @@ module Server
 
     def listen(port, host)
       server = TCPServer.new(host, port)
-      log "Server bound to http://#{host}:#{port}"
+      Server.log "Server bound to http://#{host}:#{port}"
 
       loop do
         socket       = server.accept
         request      = Request.new socket
-        response     = Response.new request, self
+        response     = Response.new request
 
-        log request
         next if request.empty?
+        Server.log request.inspect
 
         begin
           @dispatcher.dispatch(request, response, self)
         rescue Exception => e
           msg = "#{e.backtrace.first}: #{e.message} (#{e.class})", e.backtrace.drop(1).map{|s| "\t#{s}"}
-          log msg
+          Server.log msg
           socket.print '<pre style="max-width: 100%; color: red; width: 100%; font-size:20px; white-space: normal;">'
 
           socket.print msg.join("<br>")
@@ -36,7 +36,7 @@ module Server
       end
     end
 
-    def log msg
+    def self.log msg
       STDERR.puts msg
     end
   end

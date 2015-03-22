@@ -18,14 +18,9 @@ module Server
   # requested file and then looks up its content type.
 
   class Response
-    def initialize(request, server)
+    def initialize(request)
       @request = request
       @socket  = request.socket
-      @server  = server
-    end
-
-    def log msg
-      @server.log msg
     end
 
     def print msg
@@ -35,7 +30,7 @@ module Server
     def send_404
       code    = '404 Not Found'
       message = "404: File '#{@request.path}' not found\n"
-      log "404: File not found #{@request.path}"
+      Server.log "404: File not found #{@request.path}"
 
       send(code, message)
     end
@@ -49,7 +44,7 @@ module Server
       redirect_to.slice!("web_root")
       redirect_to = "http://#{@socket.addr[2]}:#{@socket.addr[1]}#{redirect_to}"
 
-      log "301: redirect to #{redirect_to}"
+      Server.log "301: redirect to #{redirect_to}"
 
       # respond with a 301 error code to redirect
       print "HTTP/1.1 301 Moved Permanently\r\n" +
