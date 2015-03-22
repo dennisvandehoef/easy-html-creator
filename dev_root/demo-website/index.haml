@@ -107,3 +107,55 @@
         .arrow-up
           +arrow-up(60px, 20px, #62bc19)
           +inline-block
+
+
+%h2.semibold
+  inline coffee and sass
+
+.content-left
+  %h3
+    inline sass
+
+  %p.inline-sass
+    text styled from inline sass
+
+  = with_sass do
+    :plain
+      p.inline-sass
+        color: green
+
+  %pre.code
+    = preserve do
+      :escaped
+        = with_sass do
+          :plain
+            p.inline-sass
+              color: green
+
+.content-right
+  %h3
+    inline coffee
+
+  %p
+    %button.inline-coffee
+      click me
+
+  = with_coffee do
+    :plain
+      $('.inline-coffee').click ->
+        alert 'button clicked'
+
+  %pre.code
+    = preserve do
+      :escaped
+        = with_coffee do
+          :plain
+            $('.inline-coffee').click ->
+              alert 'button clicked'
+
+%h2.semibold
+  use bower in your projects
+
+%p
+  just put a bower.json into your public folder and it will be resolved at generation time. don't forget to install bower 'npm install -g bower\'
+  = link_to 'http://bower.io/', 'http://bower.io/', target: 'blank'
