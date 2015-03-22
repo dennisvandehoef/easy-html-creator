@@ -42,7 +42,7 @@ module Generator
       raise $!, "#{$!} TEMPLATE::#{output_file} ", $!.backtrace
     end
 
-    def changed?(path)
+    def self.changed?(path)
       true #allways recompile haml because of partials etc.
     end
   end
@@ -69,11 +69,13 @@ module Generator
 
     def load_helper(folder)
       Dir.glob(folder).each do |path|
+        next unless Base.changed? path
         load path
         file_without_ext = path.split('/')[-1].split('.').first
         module_name      = file_without_ext.classify
-        STDERR.puts '->loading project helper: '+module_name
+        STDERR.puts "->loading project helper: \e[32m#{module_name}\e[0m"
         self.class.send(:include, module_name.constantize)
+        Base.cache path
       end
     end
 
