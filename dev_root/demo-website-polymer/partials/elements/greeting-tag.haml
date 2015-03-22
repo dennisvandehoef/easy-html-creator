@@ -1,0 +1,46 @@
+= link_tag 'bower_components/polymer/polymer.html', 'import', ''
+= link_tag 'bower_components/core-ajax/core-ajax.html', 'import', ''
+
+%polymer-element{name: "greeting-tag"}
+  %template
+    %h1 edit
+    %ul
+      %template{repeat: "{{s in salutations}}"}
+        %li
+          {{s.what}}:
+          %input{type: "text", value: "{{s.who}}"}
+
+    %h1 view
+    %ul
+      %template{repeat: "{{s in salutations}}"}
+        %li
+          {{s.what}}: "{{s.who}}"
+
+    = with_sass do
+      :plain
+        input
+          color: green
+
+  = with_coffee do
+    :plain
+      Polymer 'greeting-tag',
+        ready: ->
+          @salutations = [
+            {
+              what: 'Hello'
+              who: 'World'
+            }
+            {
+              what: 'Goodbye'
+              who: 'DOM APIs'
+            }
+            {
+              what: 'Hello'
+              who: 'Declarative'
+            }
+            {
+              what: 'Goodbye'
+              who: 'Imperative'
+            }
+          ]
+
