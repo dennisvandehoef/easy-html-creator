@@ -1,3 +1,12 @@
+1.2.1
+=================
+- Add polymer demo website
+- refactor generators
+- increase performance
+- regenerate file only if file hash chaged
+- coffee inline available via = with_coffe do
+- sass inline available via = with_sass do
+
 1.2.0
 =================
 - Add mixins for reset, resize, buttons, arrows and extend existing helper mixins
