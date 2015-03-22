@@ -12,7 +12,7 @@ module Server
     def dispatch(request, response, server)
       path = request.path
 
-      regenerate_files_if(path, server)
+      regenerate_files_if(path)
 
       return response.send_404 unless File.exist?(path)
 
@@ -36,7 +36,7 @@ module Server
       Dir.glob("#{path.gsub(WEB_ROOT, DEV_ROOT)}/*/").each do |f|
         f = f.gsub(DEV_ROOT, WEB_ROOT)
 
-        regenerate_files_if("#{f}index.html", server)
+        regenerate_files_if("#{f}index.html")
 
         f_name = File.basename(f)
         f_path = "#{path}/#{f_name}".sub("#{WEB_ROOT}/", '')
@@ -46,16 +46,16 @@ module Server
       "<!DOCTYPE html><html><head><body><h1>#{path}</h1><ul>#{content}</ul><a target='_blank' href='https://github.com/dennisvandehoef/easy-html-creator'>ehc on Github</a></body></html>"
     end
 
-    def regenerate_files_if(path, server)
+    def regenerate_files_if(path)
       return unless path.include? '.html'
       return if path.include? 'bower_components'
 
       #no html? no reload -> no regenarate
-      server.log "#######################"
-      server.log "#                     #"
-      server.log "#   Renew all files   #"
-      server.log "#                     #"
-      server.log "#######################"
+      Server.log "#######################"
+      Server.log "#                     #"
+      Server.log "#   Renew all files   #"
+      Server.log "#                     #"
+      Server.log "#######################"
       @generator.generate
     end
 
