@@ -34,8 +34,14 @@ module Generator
       "#{web_root}/#{project}"
     end
 
-    def generate
-      projects_folder.each do |project_folder|
+    def generate(path=nil)
+      if path
+        files = [File.dirname(path)]
+      else
+        files = projects_folder
+      end
+
+      files.each do |project_folder|
         next unless File.directory? project_folder
         next if project_folder.include? 'shared'
 
