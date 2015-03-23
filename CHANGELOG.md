@@ -3,9 +3,10 @@
 - Add polymer demo website
 - refactor generators
 - increase performance
-- regenerate file only if file hash chaged
+- regenerate file only if file hash changed
 - coffee inline available via = with_coffe do
 - sass inline available via = with_sass do
+- only generate requested project, to generate all projects use "ehc generate"
 
 1.2.0
 =================
