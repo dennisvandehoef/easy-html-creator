@@ -7,6 +7,7 @@ module Server
 
     def initialize
       @generator = Generator::Generator.new
+      Dir.mkdir(WEB_ROOT)
     end
 
     def dispatch(request, response, server)
@@ -33,17 +34,16 @@ module Server
 
     def list_dir(path, server)
       content = ''
-      Dir.glob("#{path.gsub(WEB_ROOT, DEV_ROOT)}/*/").each do |f|
-        f = f.gsub(DEV_ROOT, WEB_ROOT)
 
-        regenerate_files_if("#{f}index.html")
-
-        f_name = File.basename(f)
-        f_path = "#{path}/#{f_name}".sub("#{WEB_ROOT}/", '')
-        content += "<li><a href='#{f_path}'>#{f_name}</a></li>" if File.directory?(path)
+      Dir.glob("#{path.gsub(WEB_ROOT, DEV_ROOT)}/*/*.haml").each do |f|
+        next if f.include? 'layout.haml'
+        f = File.path(f)
+        f_name = File.basename(f).gsub('.haml', '.html')
+        f_path = File.dirname(f).sub("#{DEV_ROOT}", '')
+        content += "<li><a href='#{f_path}/#{f_name}'><b>#{f_path}</b>/#{f_name}</a></li>"
       end
 
-      "<!DOCTYPE html><html><head><body><h1>#{path}</h1><ul>#{content}</ul><a target='_blank' href='https://github.com/dennisvandehoef/easy-html-creator'>ehc on Github</a></body></html>"
+      "<!DOCTYPE html><html><head><style>*{ font-size: 20px; font-family: Verdana, 'Lucida Sans Unicode', sans-serif;} a,a:hover{text-decoration: none; color: #818181;}</style></head><body><h1>#{path}</h1><ul>#{content}</ul><a target='_blank' href='https://github.com/dennisvandehoef/easy-html-creator'>ehc on Github</a></body></html>"
     end
 
     def regenerate_files_if(path)
@@ -56,7 +56,8 @@ module Server
       Server.log "#   Renew all files   #"
       Server.log "#                     #"
       Server.log "#######################"
-      @generator.generate
+
+      @generator.generate path.gsub("#{WEB_ROOT}", "#{DEV_ROOT}").gsub('.html', '.haml')
     end
 
     def execute_php(path, params)
