@@ -9,7 +9,7 @@ module Generator
     end
 
     def compile_file(input_file, *args)
-      return unless Base.changed? (input_file)
+      return unless self.class.changed? (input_file)
 
       #if args[0] is a file, it is the output file
       if args.length > 0
@@ -18,7 +18,7 @@ module Generator
         compile(input_file, *args)
       end
 
-      Base.cache(input_file)
+      self.class.cache(input_file)
     end
 
     def compile(input)
@@ -37,11 +37,11 @@ module Generator
 
     def self.changed?(file)
       return true unless @@FILE_CHECKSUMS.has_key? file
-      @@FILE_CHECKSUMS[file] != Base.checksum(file)
+      @@FILE_CHECKSUMS[file] != self.checksum(file)
     end
 
     def self.cache(file)
-      @@FILE_CHECKSUMS[file] = Base.checksum(file)
+      @@FILE_CHECKSUMS[file] = self.checksum(file)
     end
   end
 end
