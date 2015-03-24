@@ -7,7 +7,7 @@ module Server
 
     def initialize
       @generator = Generator::Generator.new
-      Dir.mkdir(WEB_ROOT)
+      Dir.mkdir(WEB_ROOT) unless File.exist?(WEB_ROOT)
     end
 
     def dispatch(request, response, server)
