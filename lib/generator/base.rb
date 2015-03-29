@@ -11,7 +11,7 @@ module Generator
     def compile_file(input_file, *args)
       return unless self.class.changed? (input_file)
 
-      #if args[0] is a file, it is the output file
+      #if args[0] isset, it is a file, the output file
       if args.length > 0
         write(args[0], compile(File.read(input_file), *args))
       else
