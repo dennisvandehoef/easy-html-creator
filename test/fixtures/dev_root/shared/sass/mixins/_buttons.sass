@@ -1,0 +1,32 @@
+@mixin make-button($color: #fff, $border: 0, $start-color: #555, $end-color: #888)
+  cursor: pointer
+  text-align: center
+  text-decoration: none
+  font-size: 16px
+  line-height: 15px
+  padding: 14px 30px
+  border: $border
+  color: $color
+  +text-shadow(0, 1px, 1px, rgba(0,0,0,0.3))
+  +box-shadow(0, 0, 2px, rgba(0,0,0,0.4))
+  +border_radius(3px)
+  +inline_block
+  +background-gradient($start-color, $end-color)
+
+@mixin make-red-button
+  +make-button(#fff, none, #c83c29, #c83c29)
+
+@mixin make-green-button
+  +make-button(#fff, none, #62bc19, #49a300)
+
+@mixin make-magenta-button
+  +make-button(#fff, none, #d71a9b, #be0082)
+
+@mixin make-orange-button
+  +make-button(#fff, none, #f6a61a, #dd8d00)
+
+@mixin make-blue-button
+  +make-button(#fff, none, #4e9df5, #3584dc)
+
+
+
