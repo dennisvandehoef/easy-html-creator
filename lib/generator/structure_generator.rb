@@ -15,9 +15,8 @@ module Generator
 
     def copy_public_content(input_folder, output_folder)
       src_dir  = "#{input_folder}/public"
-      return unless File.directory? src_dir
 
-      FileUtils::copy_entry(src_dir, output_folder)
+      FileUtils::copy_entry(src_dir, output_folder) if File.directory? src_dir
     end
 
   end
