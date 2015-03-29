@@ -7,7 +7,7 @@
 - coffee inline available via = with_coffe do
 - sass inline available via = with_sass do
 - only generate requested project, to generate all projects use "ehc generate"
-- add test
+- add integration tests
 
 1.2.0
 =================
