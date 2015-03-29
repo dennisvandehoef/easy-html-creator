@@ -20,7 +20,7 @@ task :update_doc do
 end
 
 Rake::TestTask.new do |t|
-  t.libs << 'test/integration'
+  t.libs = t.libs + %w(test lib lib/generator)
 end
 
 desc "Run tests"

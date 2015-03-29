@@ -1,39 +1,50 @@
-require "minitest/reporters"
+require 'minitest/reporters'
+require 'minitest/autorun'
 require 'fileutils'
 
 module TestHelper
   Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
-  def self.require_lib(relative_path)
-    require_relative "./../lib/#{relative_path}"
-  end
-
-  def self.dev_root_path
+  def dev_root_path
     "test/fixtures/dev_root"
   end
 
-  def self.web_root_path
+  def web_root_path
     "test/fixtures/web_root"
   end
 
-  def self.generate(generators)
-    self.cleanup
+  def dev_root
+    "#{dev_root_path}/test"
+  end
 
+  def web_root
+    "#{web_root_path}/test"
+  end
+
+  def file_containes?(sub_string, file)
+    content = File.open(file, "rb") { |io| io.read }
+
+    content.must_include(sub_string)
+  end
+
+  def generate(generators)
     generators = [generators] unless generators.kind_of?(Array)
 
     generators.each do |generator|
-      generator.generate("#{TestHelper::dev_root_path}/test",
-                         "#{TestHelper::web_root_path}/test")
+      generator.generate("#{dev_root_path}/test",
+                         "#{web_root_path}/test")
     end
   end
 
-  def self.cleanup
-    FileUtils.rm_rf(TestHelper::web_root_path)
+  def cleanup
+    FileUtils.rm_rf(web_root_path)
   end
 
-  def self.reset_bower
-    File.delete("#{TestHelper::dev_root_path}/test/public/bower.json")
-    FileUtils.copy("#{TestHelper::dev_root_path}/test/public/bower.org.json",
-                   "#{TestHelper::dev_root_path}/test/public/bower.json")
+  def directory?(path, equals=true)
+    File.directory?(path).must_equal equals
+  end
+
+  def file?(path, equals=true)
+    File.file?(path).must_equal equals
   end
 end
