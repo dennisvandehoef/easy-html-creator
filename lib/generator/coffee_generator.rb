@@ -1,3 +1,5 @@
+require 'coffee_script'
+
 require_relative 'base.rb'
 
 module Generator
