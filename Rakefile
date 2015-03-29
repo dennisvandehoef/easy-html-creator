@@ -1,4 +1,5 @@
 require 'rake'
+require 'rake/testtask'
 
 desc "generates the content"
 task :generate do
@@ -17,3 +18,10 @@ task :update_doc do
   `ehc generate`
   `ruby do_upload_documentation_to_webserver.rb`
 end
+
+Rake::TestTask.new do |t|
+  t.libs << 'test/integration'
+end
+
+desc "Run tests"
+task :default => :test

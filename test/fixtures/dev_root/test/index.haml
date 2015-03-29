@@ -1,0 +1,161 @@
+%h1
+  easy-html-creator - Why we call it easy?
+
+%h2.semibold
+  Do it the ruby way
+
+%p
+  Layouts, templates, partials, helpers and static assets.
+
+%h2.semibold
+  sass, haml, coffee
+%p
+  We use sass, haml and coffe script. We also include
+  = action_view_link
+  for easier displaying images for ex.
+  %br
+  %code
+    \= image_tag 'easy-way.jpg'
+  %br
+  = image_tag('easy-way.jpg', class: 'img-thumbnail')
+
+%h2.semibold
+  DRY - Shared Helper
+%p
+  There are shared helper for ruby, sass and coffee. So Dont Repeat Your self! The copyright for ex.
+  %br
+  %code
+    \= copyright 'ehc'
+  %br
+  = copyright 'ehc'
+
+%h2.semibold
+  For sass we offer mixins for ...
+
+.content-left
+  %h3
+    bootsrap, reset and normalize
+
+  %pre.code
+    = preserve do
+      :escaped
+        @import "bootstrap/variables"
+        @import "bootstrap/mixins"
+        @import "mixins/normalize"
+
+        *
+          font-family: 'Open SANS',sans-serif
+
+        .content-left, .content-right
+          +make-xs-column(12)
+          +make-sm-column(6)
+
+.content-right
+  %h3
+    css3 and helper mixins
+
+  %pre.code
+    = preserve do
+      :escaped
+        @import "mixins/css3"
+        @import "mixins/helper"
+
+        +headlines
+          +text-shadow(1px, 1px, 3px, #555)
+
+        h1
+          +bold
+
+        img
+          +transition(all, .3s, ease-in-out)
+
+%h2.semibold
+  Special sass mixins
+
+.content-left
+  %h3
+    buttons
+
+  %p
+    .button.green
+      green button
+    .button.magenta
+      magenta button
+
+  %pre.code
+    = preserve do
+      :escaped
+        @import "mixins/buttons"
+
+        .button.magenta
+          +make-magenta-button()
+          +zoom-on-hover
+
+.content-right
+  %h3
+    arrows
+
+  %p
+    .arrow-up
+    .arrow-down
+
+  %pre.code
+    = preserve do
+      :escaped
+        @import "mixins/arrows"
+
+        .arrow-up
+          +arrow-up(60px, 20px, #62bc19)
+          +inline-block
+
+
+%h2.semibold
+  inline coffee and sass
+
+.content-left
+  %h3
+    inline sass
+
+  %p.inline-sass
+    text styled from inline sass
+
+  = with_sass do
+    :plain
+      p.inline-sass
+        color: green
+
+  %pre.code
+    = preserve do
+      :escaped
+        = with_sass do
+          :plain
+            p.inline-sass
+              color: green
+
+.content-right
+  %h3
+    inline coffee
+
+  %p
+    %button.inline-coffee
+      click me
+
+  = with_coffee do
+    :plain
+      $('.inline-coffee').click ->
+        alert 'button clicked'
+
+  %pre.code
+    = preserve do
+      :escaped
+        = with_coffee do
+          :plain
+            $('.inline-coffee').click ->
+              alert 'button clicked'
+
+%h2.semibold
+  use bower in your projects
+
+%p
+  just put a bower.json into your public folder and it will be resolved at generation time. don't forget to install bower 'npm install -g bower\'
+  = link_to 'http://bower.io/', 'http://bower.io/', target: 'blank'
