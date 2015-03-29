@@ -6,7 +6,7 @@ describe Generator::StructureGenerator do
   before { cleanup
            generate(generator) }
 
-  after  { cleanup }
+  after { cleanup }
 
   let(:generator){ Generator::StructureGenerator.new }
 
