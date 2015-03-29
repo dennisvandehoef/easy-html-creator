@@ -4,14 +4,13 @@ require_relative 'base.rb'
 module Generator
   class StructureGenerator < Generator::Base
     def generate(input_folder, output_folder)
-      return if File.directory? output_folder
+      unless File.directory? output_folder
+        FileUtils::mkdir_p output_folder
+        FileUtils::mkdir_p "#{output_folder}/css/"
+        FileUtils::mkdir_p "#{output_folder}/js/"
+      end
 
-      FileUtils.rm_rf(Dir.glob("#{output_folder}/*"))
-
-      FileUtils::mkdir_p output_folder
       copy_public_content(input_folder, output_folder)
-      FileUtils::mkdir_p "#{output_folder}/css/"
-      FileUtils::mkdir_p "#{output_folder}/js/"
     end
 
     def copy_public_content(input_folder, output_folder)
@@ -23,4 +22,3 @@ module Generator
 
   end
 end
-
