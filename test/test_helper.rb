@@ -5,6 +5,8 @@ require 'fileutils'
 module TestHelper
   Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
+  MiniTest::Unit.after_tests { cleanup }
+
   def dev_root_path
     "test/fixtures/dev_root"
   end
