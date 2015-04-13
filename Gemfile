@@ -3,6 +3,4 @@ ruby '2.1.3'
 
 gemspec
 
-
-gem 'minitest-colorer'
 gem 'minitest-reporters'

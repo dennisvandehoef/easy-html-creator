@@ -1,7 +1,5 @@
 include TestHelper
 
-require 'generator/bower_generator'
-
 def reset_bower
   File.delete("#{dev_root_path}/test/public/bower.json")
   FileUtils.copy("#{dev_root_path}/test/public/bower.org.json",

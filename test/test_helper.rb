@@ -2,10 +2,16 @@ require 'minitest/reporters'
 require 'minitest/autorun'
 require 'fileutils'
 
+require 'generator/structure_generator'
+require 'generator/sass_generator'
+require 'generator/bower_generator'
+require 'generator/coffee_generator'
+require 'generator/haml_generator'
+
 module TestHelper
   Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
-  MiniTest::Unit.after_tests { cleanup }
+  MiniTest::after_run { cleanup }
 
   def dev_root_path
     "test/fixtures/dev_root"

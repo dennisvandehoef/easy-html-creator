@@ -5,7 +5,7 @@
     = render_partial '_assets.stylesheets'
     = render_partial '_assets.javascripts'
 
-  %body{class: body_class}
+  %body{class: "#{body_class} layout-haml"}
     = render_partial '_header'
     .container
       = yield

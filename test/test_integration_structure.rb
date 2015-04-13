@@ -1,7 +1,5 @@
 include TestHelper
 
-require 'generator/structure_generator'
-
 describe Generator::StructureGenerator do
   before { cleanup
            generate(generator) }

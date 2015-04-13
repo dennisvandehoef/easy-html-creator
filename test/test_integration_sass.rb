@@ -1,7 +1,5 @@
 include TestHelper
 
-require 'generator/sass_generator'
-
 def reset_sass
   File.delete("#{dev_root}/sass/_sub.sass")
   FileUtils.copy("#{dev_root}/sass/_sub.org.sass",
