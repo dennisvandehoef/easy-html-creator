@@ -4,9 +4,10 @@ require_relative 'haml_generator.rb'
 require_relative 'structure_generator.rb'
 require_relative 'bower_generator.rb'
 
-SassGenerator::add_load_path('./dev_root/shared/sass')
 
 module Generator
+  SassGenerator::add_load_path('./dev_root/shared/sass')
+
   class Generator
     def initialize
       @generators = [ BowerGenerator.new,

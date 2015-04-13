@@ -1,7 +1,5 @@
 include TestHelper
 
-require 'generator/coffee_generator'
-
 def reset_coffee
   File.delete("#{dev_root}/coffee/sub.coffee")
   FileUtils.copy("#{dev_root}/coffee/sub.org.coffee",
