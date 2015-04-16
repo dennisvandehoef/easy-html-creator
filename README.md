@@ -42,6 +42,7 @@ TODO
 ========
 - clean/refactor code
 - Add tests
+- Add Travis intigration (https://travis-ci.org)
 
 Stats
 ========
