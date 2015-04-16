@@ -15,6 +15,7 @@ module Generator
 
     def generate(input_folder, output_folder)
       layout_path = "#{input_folder}/layout.haml"
+      return unless File.file? layout_path
       layout      = Haml::Engine.new(File.read(layout_path), @haml_options)
 
       Dir.glob("#{input_folder}/*.haml").select do |input_file|
