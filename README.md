@@ -53,3 +53,12 @@ Credits
 *Files are located in the first commit and/or version 0.0.1*
 - ./ruby_files/generate.rb is based on: https://github.com/scarpenter/command_line_haml/blob/master/generate.rb
 - ./ruby_files/server.rb is based on: https://practicingruby.com/articles/implementing-an-http-file-server
+
+Contributing
+============
+1. Fork it ( https://github.com/dennisvandehoef/easy_gravatar/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Make sure the test walk trough (`rake test`)
+6. Create a new Pull Request
