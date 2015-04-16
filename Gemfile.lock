@@ -6,7 +6,6 @@ PATH
       bootstrap-sass
       coffee-script
       haml
-      minitest-reporters
       sass
 
 GEM
@@ -75,5 +74,6 @@ PLATFORMS
 
 DEPENDENCIES
   easy_html_creator!
+  minitest-reporters
   rake
   yard
