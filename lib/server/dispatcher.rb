@@ -10,7 +10,7 @@ module Server
       Dir.mkdir(WEB_ROOT) unless File.exist?(WEB_ROOT)
     end
 
-    def dispatch(request, response, server)
+    def dispatch(request, response)
       path = request.path
 
       regenerate_files_if(path)
@@ -27,12 +27,12 @@ module Server
         if File.exist?("#{path}/index.html")
           response.send_301 "#{path}/index.html"
         else
-          response.send(200, list_dir(path, server))
+          response.send(200, list_dir(path))
         end
       end
     end
 
-    def list_dir(path, server)
+    def list_dir(path)
       content = ''
 
       Dir.glob("#{path.gsub(WEB_ROOT, DEV_ROOT)}/*/*.haml").each do |f|
@@ -43,10 +43,19 @@ module Server
         content += "<li><a href='#{f_path}/#{f_name}'><b>#{f_path}</b>/#{f_name}</a></li>"
       end
 
+       Dir.glob("#{path.gsub(WEB_ROOT, DEV_ROOT)}/*/public/*.html").each do |f|
+        f = File.path(f)
+        f_name = File.basename(f)
+        f_path = File.dirname(f).sub('/public', '').sub("#{DEV_ROOT}", '')
+        puts f_path
+        content += "<li><a href='#{f_path}/#{f_name}'><b>#{f_path}</b>/#{f_name}</a></li>"
+      end
+
       "<!DOCTYPE html><html><head><style>*{ font-size: 20px; font-family: Verdana, 'Lucida Sans Unicode', sans-serif;} a,a:hover{text-decoration: none; color: #818181;}</style></head><body><h1>#{path}</h1><ul>#{content}</ul><a target='_blank' href='https://github.com/dennisvandehoef/easy-html-creator'>ehc on Github</a></body></html>"
     end
 
     def regenerate_files_if(path)
+      #TODO we only generate sass and coffee if its a haml file
       return unless path.include? '.html'
       return if path.include? 'bower_components'
 
