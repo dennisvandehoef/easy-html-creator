@@ -20,4 +20,20 @@ module AssetHelper
       raw Generator::SassGenerator.new.compile(input)
     end
   end
+
+  def glyph_icon_classes(icon)
+    "glyphicon glyphicon-#{icon}"
+  end
+
+  def glyph_icon(icon, content='')
+    content_tag(:span, content, class: glyph_icon_classes(icon))
+  end
+
+  def select_partials(dir='*', &block)
+    folder = "#{@input_folder}/partials/#{dir}"
+    Dir.glob("#{folder}").each do |partial|
+      partial = partial.sub("#{@input_folder}/partials/", '').sub('.haml', '')
+      block.call(partial) if block_given?
+    end
+  end
 end
