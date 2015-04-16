@@ -8,8 +8,14 @@ require 'generator/bower_generator'
 require 'generator/coffee_generator'
 require 'generator/haml_generator'
 
+require 'server/server'
+require 'server/dispatcher'
+
 module TestHelper
   Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
+
+  Server::Dispatcher::WEB_ROOT = "test/fixtures/#{Server::Dispatcher::WEB_ROOT}"
+  Server::Dispatcher::DEV_ROOT = "test/fixtures/#{Server::Dispatcher::DEV_ROOT}"
 
   MiniTest::after_run { cleanup }
 
