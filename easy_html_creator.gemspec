@@ -23,13 +23,15 @@ We also included the 'actionview' gem, to enable the use of rails standard funct
   s.executables = ["ehc",
                    "easy_html_creator"]
 
+  s.required_ruby_version = '>= 2.0.0'
+
   s.add_runtime_dependency 'haml'
   s.add_runtime_dependency 'sass'
   s.add_runtime_dependency 'coffee-script'
   s.add_runtime_dependency 'bootstrap-sass'
   s.add_runtime_dependency 'actionview'
-  s.add_runtime_dependency 'minitest-reporters'
 
   s.add_development_dependency 'rake'
   s.add_development_dependency 'yard'
+  s.add_development_dependency 'minitest-reporters'
 end
