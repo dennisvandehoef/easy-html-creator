@@ -10,9 +10,13 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="favicon.ico" type='image/x-icon'/>
+    <link rel="shortcut icon" href="favicon.ico" type='image/x-icon'/>
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:600" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:700" media="screen" rel="stylesheet" type="text/css" />
     <link href="css/main.css" media="screen" rel="stylesheet" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -25,28 +29,168 @@
     <![endif]-->
   </head>
   <body class="index">
-    header(.haml)
-    <h1 class="test1">
-      headline
-    </h1>
-    <p>
-      Here is the index page content.
-    </p>
-    <p>
-      And more index content.
-    </p>
-    <p>
-      this comes from shared/shared_helper.rb:
-      sharedhelper_method
-    </p>
-    <p>
-      this comes from test1/test_helper.rb:
-      testhelper_method
-    </p>
-    <p>
-      and that's why we say, do it the easy-html-creator way!
-      <img alt="Easy way" src="images/easy-way.jpg" />
-    </p>
-    footer(.haml)
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="navbar-toggle" data-target="#myNavbar" data-toggle="collapse" type="button">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">easy-html-creator</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li class="active">
+              <a href="#">Home</a>
+            </li>
+            <li>
+              <a href="#">Page 1</a>
+            </li>
+            <li>
+              <a href="#">Page 2</a>
+            </li>
+            <li>
+              <a href="#">Page 3</a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="#">
+                <span class="glyphicon glyphicon-user"></span>
+                Sign Up
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="glyphicon glyphicon-log-in"></span>
+                Login
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <h1>
+        easy-html-creator - Why we call it easy?
+      </h1>
+      <h2 class="semibold">
+        Do it the ruby way
+      </h2>
+      <p>
+        Layouts, templates, partials, helpers and static assets.
+      </p>
+      <h2 class="semibold">
+        sass, haml, coffee
+      </h2>
+      <p>
+        We use sass, haml and coffe script. We also include
+        <a target="blank" href="http://guides.rubyonrails.org/action_view_overview.html#overview-of-helpers-provided-by-action-view">action_view</a>
+        for easier displaying images for ex.
+        <br>
+        <code>= image_tag 'easy-way.jpg'</code>
+        <br>
+        <img class="img-thumbnail" src="images/easy-way.jpg" alt="Easy way" />
+      </p>
+      <h2 class="semibold">
+        DRY - Shared Helper
+      </h2>
+      <p>
+        There are shared helper for ruby, sass and coffee. So Dont Repeat Your self! The copyright for ex.
+        <br>
+        <code>= copyright 'ehc'</code>
+        <br>
+        © 2015 by ehc
+      </p>
+      <h2 class="semibold">
+        For sass we offer mixins for ...
+      </h2>
+      <div class="content-left">
+        <h3>
+          bootsrap, reset and normalize
+        </h3>
+        <pre class="code">@import &quot;bootstrap/variables&quot;&#x000A;@import &quot;bootstrap/mixins&quot;&#x000A;@import &quot;mixins/normalize&quot;&#x000A;&#x000A;*&#x000A;  font-family: 'Open SANS',sans-serif&#x000A;&#x000A;.content-left, .content-right&#x000A;  +make-xs-column(12)&#x000A;  +make-sm-column(6)</pre>
+      </div>
+      <div class="content-right">
+        <h3>
+          css3 and helper mixins
+        </h3>
+        <pre class="code">@import &quot;mixins/css3&quot;&#x000A;@import &quot;mixins/helper&quot;&#x000A;&#x000A;+headlines&#x000A;  +text-shadow(1px, 1px, 3px, #555)&#x000A;&#x000A;h1&#x000A;  +bold&#x000A;&#x000A;img&#x000A;  +transition(all, .3s, ease-in-out)</pre>
+      </div>
+      <h2 class="semibold">
+        Special sass mixins
+      </h2>
+      <div class="content-left">
+        <h3>
+          buttons
+        </h3>
+        <p>
+          <div class="button green">
+            green button
+          </div>
+          <div class="button magenta">
+            magenta button
+          </div>
+        </p>
+        <pre class="code">@import &quot;mixins/buttons&quot;&#x000A;&#x000A;.button.magenta&#x000A;  +make-magenta-button()&#x000A;  +zoom-on-hover</pre>
+      </div>
+      <div class="content-right">
+        <h3>
+          arrows
+        </h3>
+        <p>
+          <div class="arrow-up"></div>
+          <div class="arrow-down"></div>
+        </p>
+        <pre class="code">@import &quot;mixins/arrows&quot;&#x000A;&#x000A;.arrow-up&#x000A;  +arrow-up(60px, 20px, #62bc19)&#x000A;  +inline-block</pre>
+      </div>
+      <h2 class="semibold">
+        inline coffee and sass
+      </h2>
+      <div class="content-left">
+        <h3>
+          inline sass
+        </h3>
+        <p class="inline-sass">
+          text styled from inline sass
+        </p>
+        <style>p.inline-sass {
+          color: green; }
+        </style>
+        <pre class="code">= with_sass do&#x000A;  :plain&#x000A;    p.inline-sass&#x000A;      color: green</pre>
+      </div>
+      <div class="content-right">
+        <h3>
+          inline coffee
+        </h3>
+        <p>
+          <button class="inline-coffee">
+            click me
+          </button>
+        </p>
+        <script>(function() {
+          $('.inline-coffee').click(function() {
+            return alert('button clicked');
+          });
+        
+        }).call(this);
+        </script>
+        <pre class="code">= with_coffee do&#x000A;  :plain&#x000A;    $('.inline-coffee').click -&gt;&#x000A;      alert 'button clicked'</pre>
+      </div>
+      <h2 class="semibold">
+        use bower in your projects
+      </h2>
+      <p>
+        just put a bower.json into your public folder and it will be resolved at generation time. don't forget to install bower 'npm install -g bower\'
+        <a target="blank" href="http://bower.io/">http://bower.io/</a>
+      </p>
+    </div>
+    <div class="footer">
+      dev_root/demo-website/partials/_footer.haml
+      <div class="copyright">
+        © 2015 by ehc
+      </div>
+    </div>
   </body>
 </html>
