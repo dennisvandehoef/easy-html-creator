@@ -22,7 +22,7 @@ module Server
         Server.log request.inspect
 
         begin
-          @dispatcher.dispatch(request, response, self)
+          @dispatcher.dispatch(request, response)
         rescue Exception => e
           msg = "#{e.backtrace.first}: #{e.message} (#{e.class})", e.backtrace.drop(1).map{|s| "\t#{s}"}
           Server.log msg
