@@ -1,4 +1,5 @@
 require 'coffee-script'
+require 'uglifier'
 
 module AssetHelper
   include ActionView::Context
@@ -10,7 +11,7 @@ module AssetHelper
   def with_coffee(&block)
     input = capture_haml(&block)
     content_tag :script do
-      raw Generator::CoffeeGenerator.new.compile(input)
+      raw Uglifier.compile(Generator::CoffeeGenerator.new.compile(input))
     end
   end
 
@@ -42,7 +43,21 @@ module AssetHelper
   end
 
   def path_to_bower(path)
-    return "bower_components/#{path}" if file_exists? "bower_components/#{path}"
+    return "bower_components/#{path}"
     path
+  end
+
+  def headjs_javascript_include_tag(tag, path)
+    content_tag :script do
+      raw "head.load({'#{tag}': '#{path_to_js(path)}'});"
+    end
+  end
+
+  def headjs_javascript_include_bower_tag(tag, path)
+    headjs_javascript_include_tag(tag, path_to_bower(path))
+  end
+
+  def headjs_stylesheet_link_tag(tag, path)
+    headjs_javascript_include_tag(tag, path_to_css(path))
   end
 end
