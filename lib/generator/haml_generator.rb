@@ -1,6 +1,7 @@
 require 'fileutils'
 require 'haml'
 require 'action_view'
+require 'htmlcompressor'
 
 require_relative 'helper/activesupport_override.rb'
 require_relative 'helper/asset_helper.rb'
@@ -11,6 +12,7 @@ module Generator
     def initialize()
       @example_boolean = false
       @haml_options = { attr_wrapper: '"', format: :html5 }
+      @compressor = HtmlCompressor::Compressor.new
     end
 
     def generate(input_folder, output_folder)
@@ -37,7 +39,7 @@ module Generator
       layout.render context, body_class: scope do
         # Render the actual page contents in place of the call to "yield".
         body = Haml::Engine.new(input, @haml_options)
-        body.render(context)
+        @compressor.compress body.render(context)
       end
     rescue Exception => e
       raise $!, "#{$!} TEMPLATE::#{output_file} ", $!.backtrace
