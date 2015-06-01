@@ -1,4 +1,5 @@
 require 'coffee_script'
+require 'uglifier'
 
 require_relative 'base.rb'
 
@@ -15,6 +16,11 @@ module Generator
         outpu_file       = File.join(output_folder, output_file_name)
 
         compile_file(input_file, outpu_file)
+
+        min_file_name = outpu_file.sub '.js', '.min.js'
+        File.write(min_file_name,
+                   Uglifier.compile(
+                      File.read(outpu_file)))
       end
     end
 

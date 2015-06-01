@@ -30,6 +30,10 @@ We also included the 'actionview' gem, to enable the use of rails standard funct
   s.add_runtime_dependency 'coffee-script'
   s.add_runtime_dependency 'bootstrap-sass'
   s.add_runtime_dependency 'actionview'
+  s.add_runtime_dependency 'cssminify'
+  s.add_runtime_dependency 'uglifier'
+
+
 
   s.add_development_dependency 'rake'
   s.add_development_dependency 'yard'
