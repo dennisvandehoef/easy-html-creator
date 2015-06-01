@@ -8,7 +8,7 @@ end
 
 describe Generator::BowerGenerator do
   # cleanup all resolved bower_components
-  FileUtils.rm_rf("#{dev_root_path}/test/public/bower_components")
+  FileUtils.rm_rf("#{web_root_path}/test/bower_components")
 
   before { cleanup
            generate(generator) }
@@ -16,8 +16,8 @@ describe Generator::BowerGenerator do
   after  { cleanup
            reset_bower}
 
-  let(:generator){ [Generator::BowerGenerator.new,
-                    Generator::StructureGenerator.new
+  let(:generator){ [Generator::StructureGenerator.new,
+                    Generator::BowerGenerator.new
                     ] }
 
   let(:dev_root_bower_file){ "#{dev_root}/public/bower.json" }
@@ -30,7 +30,6 @@ describe Generator::BowerGenerator do
     end
 
     it "resolves the bower file " do
-      directory?("#{dev_root}/public/bower_components")
       directory?("#{web_root}/bower_components")
     end
 
