@@ -10,8 +10,8 @@ module Generator
 
   class Generator
     def initialize
-      @generators = [ BowerGenerator.new,
-                      StructureGenerator.new,
+      @generators = [ StructureGenerator.new,
+                      BowerGenerator.new,
                       CoffeeGenerator.new,
                       SassGenerator.new,
                       HamlGenerator.new ]
