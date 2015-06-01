@@ -1,4 +1,5 @@
 require 'sass'
+require 'cssminify'
 require_relative 'base.rb'
 
 #just require bootsrap and it will be in the sass path
@@ -24,6 +25,10 @@ module Generator
         output_file      = File.join(output_folder, output_file_name)
 
         compile_file(input_file, output_file)
+        min_file_name = output_file.sub '.css', '.min.css'
+        File.write(min_file_name,
+                   CSSminify.compress(
+                      File.read(output_file)))
       end
     end
 
