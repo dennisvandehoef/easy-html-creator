@@ -1,14 +1,14 @@
 module Server
   # Map extensions to their content type
   CONTENT_TYPE_MAPPING = {
-    'html' => 'text/html',
-    'txt'  => 'text/plain',
+    'html' => 'text/html;charset=utf-8',
+    'txt'  => 'text/plain;charset=utf-8',
     'png'  => 'image/png',
     'jpg'  => 'image/jpeg',
     'ico'  => 'image/x-icon',
-    'js'   => 'text/javascript',
-    'css'  => 'text/css',
-    'php'  => 'text/html'
+    'js'   => 'text/javascript;charset=utf-8',
+    'css'  => 'text/css;charset=utf-8',
+    'php'  => 'text/html;charset=utf-8'
   }
 
   # Treat as binary data if content type cannot be found
@@ -49,15 +49,21 @@ module Server
       # respond with a 301 error code to redirect
       print "HTTP/1.1 301 Moved Permanently\r\n" +
              "Location: #{redirect_to}\r\n"+
-             "Connection: close\r\n"
+             "Connection: Keep-Alive\r\n"
     end
 
     def send_file path
-      File.open(@request.path, "rb") do |file|
+      last_modified = File.mtime(path).httpdate
+      File.open(path, "rb") do |file|
         print "HTTP/1.1 200 OK\r\n" +
                "Content-Type: #{content_type(file)}\r\n" +
                "Content-Length: #{file.size}\r\n" +
-               "Connection: close\r\n" +
+               "Connection: Keep-Alive\r\n" +
+               "Vary: Accept-Encoding\r\n" +
+               "Last-Modified: #{last_modified}\r\n" +
+               "Date: #{Date.today.httpdate}\r\n" +
+               "Expires: #{Date.today.next_year.httpdate}\r\n" +
+               "Cache-Control: max-age=31536000,public\r\n" +
                "\r\n"
 
         # write the contents of the file to the socket
@@ -69,7 +75,8 @@ module Server
       print "HTTP/1.1 #{code}\r\n" +
              "Content-Type: #{type}\r\n" +
              "Content-Length: #{message.size}\r\n" +
-             "Connection: close\r\n" +
+             "Connection: Keep-Alive\r\n" +
+             "Vary: Accept-Encoding\r\n" +
              "\r\n" +
              message
     end
