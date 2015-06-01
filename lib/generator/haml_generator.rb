@@ -36,11 +36,13 @@ module Generator
     def compile(input, output_file, layout, context, scope)
       # If the file being processed by Haml contains a yield statement, the block passed to
       # "render" will be called when it's hit.
-      layout.render context, body_class: scope do
+      result = layout.render(context, body_class: scope) do
         # Render the actual page contents in place of the call to "yield".
         body = Haml::Engine.new(input, @haml_options)
-        @compressor.compress body.render(context)
+        body.render(context)
       end
+
+      @compressor.compress result
     rescue Exception => e
       raise $!, "#{$!} TEMPLATE::#{output_file} ", $!.backtrace
     end
