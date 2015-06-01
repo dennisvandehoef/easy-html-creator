@@ -20,6 +20,8 @@ module Generator
 
     def compile(input, *args)
       CoffeeScript.compile(input)
+    rescue Exception => e
+      raise $!, "#{$!} TEMPLATE::#{args.to_s} ", $!.backtrace
     end
   end
 end
