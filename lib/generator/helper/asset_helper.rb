@@ -36,4 +36,13 @@ module AssetHelper
       block.call(partial) if block_given?
     end
   end
+
+  def javascript_include_bower_tag(path)
+    '<script src="'+path_to_bower(path)+'"></script>'
+  end
+
+  def path_to_bower(path)
+    return "bower_components/#{path}" if file_exists? "bower_components/#{path}"
+    path
+  end
 end
