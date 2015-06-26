@@ -34,8 +34,6 @@ We also included the 'actionview' gem, to enable the use of rails standard funct
   s.add_runtime_dependency 'uglifier'
   s.add_runtime_dependency 'htmlcompressor'
 
-
-
   s.add_development_dependency 'rake'
   s.add_development_dependency 'yard'
   s.add_development_dependency 'minitest-reporters'

@@ -4,7 +4,6 @@ require 'fileutils'
 
 require 'generator/structure_generator'
 require 'generator/sass_generator'
-require 'generator/bower_generator'
 require 'generator/coffee_generator'
 require 'generator/haml_generator'
 
