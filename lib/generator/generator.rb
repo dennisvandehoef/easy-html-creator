@@ -2,7 +2,6 @@ require_relative 'sass_generator.rb'
 require_relative 'coffee_generator.rb'
 require_relative 'haml_generator.rb'
 require_relative 'structure_generator.rb'
-require_relative 'bower_generator.rb'
 
 
 module Generator
