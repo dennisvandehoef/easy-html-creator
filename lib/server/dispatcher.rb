@@ -57,7 +57,6 @@ module Server
     def regenerate_files_if(path)
       #TODO we only generate sass and coffee if its a haml file
       return unless path.include? '.html'
-      return if path.include? 'bower_components'
 
       #no html? no reload -> no regenarate
       Server.log "#######################"
