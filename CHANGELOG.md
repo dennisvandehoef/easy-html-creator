@@ -1,6 +1,5 @@
 1.3.0
 =================
-- Add polymer demo website
 - refactor generators
 - increase performance
 - regenerate file only if file hash changed
