@@ -9,10 +9,7 @@ Once you learned the joy of haml or sass, it get boring to program in 'plain old
 
 Using our Gem you could generate and maintain multiple static websites and program them in your preferred languages.
 
-Currently supported by our fast and lightweight re-generation server:
-HAML
-Sass (with bootstarp)
-CoffeeScript
+Currently supported by our fast and lightweight re-generation server: HAML, Sass (with bootstarp) and CoffeeScript.
 
 We also included the 'actionview' gem, to enable the use of rails standard functions like 'text_field_tag'."
   s.authors     = ["Dennis van de Hoef"]
