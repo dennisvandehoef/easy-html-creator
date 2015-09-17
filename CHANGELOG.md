@@ -1,3 +1,7 @@
+1.3.1
+=================
+- display the error pages correctly in FireFox 
+
 1.3.0
 =================
 - refactor generators
