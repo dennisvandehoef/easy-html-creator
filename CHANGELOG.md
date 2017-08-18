@@ -1,6 +1,10 @@
+1.3.2
+=================
+- require time
+
 1.3.1
 =================
-- display the error pages correctly in FireFox 
+- display the error pages correctly in FireFox
 
 1.3.0
 =================
