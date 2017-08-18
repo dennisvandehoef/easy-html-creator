@@ -18,6 +18,8 @@ module Server
   # requested file and then looks up its content type.
 
   class Response
+    require 'time'
+
     def initialize(request)
       @request = request
       @socket  = request.socket
